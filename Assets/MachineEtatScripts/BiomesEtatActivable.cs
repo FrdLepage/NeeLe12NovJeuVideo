@@ -112,7 +112,7 @@ public class BiomesEtatActivable : BiomesEtatsBase
     Vector3 position = new Vector3(0,0,0);
     position = biome.transform.position;
     if(biome.biomeItem != null){
-      biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0.05f,0.05f,0.05f);
+      biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0.1f,0.1f,0.1f);
 
     }
     // GameObject champignons = GameObject.Instantiate(Resources.Load("items/champignons"), position, Quaternion.identity) as GameObject;
