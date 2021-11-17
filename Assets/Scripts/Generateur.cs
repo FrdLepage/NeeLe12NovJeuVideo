@@ -214,6 +214,7 @@ public class Generateur : MonoBehaviour
         int tirage = 1;
         int tirageRouge = 1;
         int allier = 1;
+        int npc = 1;
 
         for (int z = 0; z < prof; z++)
         {
@@ -263,19 +264,36 @@ public class Generateur : MonoBehaviour
                 Vector3 position = new Vector3(0,0,0);
                 tirage++;
                 allier++;
+                npc++;
+                tirageRouge++;
+
                 if(tirage == 3000){
 
                 GameObject ennemi = Instantiate((GameObject)Resources.Load("ennemis/ennemi"));
-            
                 // unAgent.GetComponent<EnnemiEtatsManager>().cible = perso;
                 // unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
                 //trouver la position du cube
                 position = unCube.transform.position;
                 //spawn prefab at position
                 Instantiate(ennemi, position, Quaternion.identity);
-                
                 tirage = 0;
                 }
+
+                if(npc == 3500){
+
+                position = unCube.transform.position;
+                GameObject Npc = Instantiate((GameObject)Resources.Load("NPC"), new Vector3(position.x, position.y, position.z), Quaternion.identity);
+          
+                //trouver la position du cube
+                //spawn prefab at position
+                Npc.GetComponent<NpcEtatsManager>().cible = perso;
+                Npc.GetComponent<NpcEtatsManager>().origine = unCube.transform;
+                npc = 0;
+                }
+
+
+
+
 
                 if(allier == 2000){
 
@@ -290,17 +308,17 @@ public class Generateur : MonoBehaviour
 
                 // tirageRouge++;
 
-                // if(tirageRouge == 2000){
+                if(tirageRouge == 2200){
 
-                // GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+1, unCube.transform.position.z), Quaternion.identity);
-                // unAgent.GetComponent<EnnemiEtatsManagerRouge>().cible = perso;
-                // unAgent.GetComponent<EnnemiEtatsManagerRouge>().origine = unCube.transform;
-                // //trouver la position du cube
-                // position = unCube.transform.position;
-                // //spawn prefab at position
-                // // Instantiate(ennemi, position, Quaternion.identity);
-                // tirageRouge = 0;
-                // }
+                GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+1, unCube.transform.position.z), Quaternion.identity);
+                unAgent.GetComponent<EnnemiEtatsManagerRouge>().cible = perso;
+                unAgent.GetComponent<EnnemiEtatsManagerRouge>().origine = unCube.transform;
+                //trouver la position du cube
+                position = unCube.transform.position;
+                //spawn prefab at position
+                // Instantiate(ennemi, position, Quaternion.identity);
+                tirageRouge = 0;
+                }
                 
                 
                 unCube.transform.parent = transform;
