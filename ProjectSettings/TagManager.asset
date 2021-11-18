@@ -8,6 +8,7 @@ TagManager:
   - attaque
   - Boule
   - objet
+  - Lave
   layers:
   - Default
   - TransparentFX

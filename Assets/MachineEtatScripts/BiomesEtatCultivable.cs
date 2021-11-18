@@ -3,12 +3,10 @@ using UnityEngine;
 public class BiomesEtatCultivable : BiomesEtatsBase
 {
   
-   public override void InitEtat(BiomesEtatsManager biome)
-  {
-      // Debug.Log("allo cultivable");
-    
 
-     
+  public override void InitEtat(BiomesEtatsManager biome)
+  {
+    
   }
   public override void UpdateEtat(BiomesEtatsManager biome)
   {

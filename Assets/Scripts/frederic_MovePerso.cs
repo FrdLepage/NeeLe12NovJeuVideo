@@ -80,7 +80,12 @@ public class frederic_MovePerso : MonoBehaviour
     void Attaque(){
     Instantiate(attaque,transform.position, Quaternion.identity);
     }
-
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //      if(other.gameObject.CompareTag("Lave")){
+    //         transform.position=new Vector3(107.5f,41.7f,99.5f);
+    //     }
+    // }
     private IEnumerator Sphere (){
         SoundManager.instance.JouerSon(persoAttaque);
         yield return new WaitForSeconds(1f);
