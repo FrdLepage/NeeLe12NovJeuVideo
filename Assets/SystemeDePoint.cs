@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class SystemeDePoint : MonoBehaviour
 {
     public Slider slider;
-
+    public int currentPoint{ get; set;}
     public void SetMaxPoint(int point){
         slider.maxValue = point;
-        slider.value = point;
     }
     
-    public void SetPoint(int point){
-        slider.value=point;
+    public void SetPoint(){
+        slider.value=currentPoint;
     }
 }

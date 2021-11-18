@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Generateur : MonoBehaviour
 {
@@ -16,10 +18,11 @@ public class Generateur : MonoBehaviour
 
     public Renderer textureRenderer;
     public float attenuateur;
-    
+    public GameObject point;
     private Object mats; 
     private GameObject its; 
-
+    [SerializeField] private Text _compteur; 
+    private float _timer=600.0f;//Pour savoir le temps du timer au départ
     public int coefAltitude = 10;
     // public Color[] biomesCouleurs;
 
@@ -29,6 +32,15 @@ public class Generateur : MonoBehaviour
         GenererListeItems();
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
+        InvokeRepeating("Timer",1.0f,1.0f);
+    }
+    private void Timer() {
+        if(_timer==0){
+            SceneManager.LoadScene("GameOver");
+        }else{
+        _timer--;
+        _compteur.text=_timer.ToString();
+        }
     }
 
     void GenererListeItems()
@@ -231,7 +243,7 @@ public class Generateur : MonoBehaviour
                 GameObject unItem = Instantiate(items[quelBiome][variantItem],new Vector3( unCube.transform.position.x,unCube.transform.position.y,unCube.transform.position.z),Quaternion.identity);
                 unCube.GetComponent<BiomesEtatsManager>().biomeItem = unItem;
                 }
-
+                unCube.GetComponent<BiomesEtatsManager>().point = point;
 
                 int variantDepart = Random.Range(0,biomeDepart.Count-1);
 
