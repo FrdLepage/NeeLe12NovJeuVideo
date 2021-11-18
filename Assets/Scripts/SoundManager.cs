@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
  // Singleton *******************************
-
+   
     //déclaration du composant AudioSource
     private AudioSource _audio;
     private static SoundManager _instance;

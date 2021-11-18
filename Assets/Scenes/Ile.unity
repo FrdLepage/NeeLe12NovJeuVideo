@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 1101622817}
   - component: {fileID: 1101622816}
   - component: {fileID: 1101622815}
+  - component: {fileID: 1101622819}
   m_Layer: 0
   m_Name: SoundManger
   m_TagString: Untagged
@@ -600,11 +601,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4c61dde79e63c3845a08928954e7ce39, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -724,6 +725,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1101622819
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101622814}
+  m_Enabled: 1
 --- !u!1 &1507142664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8729595041891008939, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
@@ -1029,6 +1038,10 @@ PrefabInstance:
       propertyPath: attaque
       value: 
       objectReference: {fileID: 4127441754837135431, guid: a1f8c697726f8664ebf483e483423eef, type: 3}
+    - target: {fileID: 2201359545335330064, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
+      propertyPath: persoAttaque
+      value: 
+      objectReference: {fileID: 8300000, guid: c81e8fa1fb7d5d542b724ec2cd5cfb1f, type: 3}
     - target: {fileID: 2663568957621326269, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -30.079197

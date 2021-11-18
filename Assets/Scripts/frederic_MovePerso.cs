@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class frederic_MovePerso : MonoBehaviour
 {
+    [SerializeField] AudioClip persoAttaque;
     [SerializeField] private float vitesseMouvement=20.0f;
     [SerializeField] private float vitesseRotation=20.0f;
     [SerializeField] private float impulsionSaut=20.0f;
@@ -17,6 +18,7 @@ public class frederic_MovePerso : MonoBehaviour
 
     private GameObject attaque;
     private Vector3 directionsMouvement= Vector3.zero;
+    private bool peutAttaquer = true;
 
     Animator animator;
     CharacterController controller;
@@ -30,10 +32,10 @@ public class frederic_MovePerso : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Input.GetKeyDown(KeyCode.E) && peutAttaquer == true){
+            peutAttaquer = false;
             animator.SetTrigger("attaque");
             StartCoroutine(Sphere());
-            
         }
 //le joueur quand il clic sur les flèches à gauche ou à droite le joueur se tourne soit vers la gauche ou la droite
         transform.Rotate(0,vitesseRotation*Input.GetAxis("Horizontal"),0);
@@ -80,6 +82,7 @@ public class frederic_MovePerso : MonoBehaviour
     }
 
     private IEnumerator Sphere (){
+        SoundManager.instance.JouerSon(persoAttaque);
         yield return new WaitForSeconds(1f);
         attaque = Resources.Load("Sphere") as GameObject;
         var Sphere = Instantiate(attaque,transform.position, Quaternion.identity);
@@ -98,7 +101,7 @@ public class frederic_MovePerso : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Destroy(Sphere);
 
-        
+        peutAttaquer = true;
         yield return null;
     }
 }
