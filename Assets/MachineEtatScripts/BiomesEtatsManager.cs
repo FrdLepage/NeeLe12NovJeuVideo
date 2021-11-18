@@ -9,6 +9,8 @@ public class BiomesEtatsManager : MonoBehaviour
     private BiomesEtatsBase etatActuel;
     public BiomesEtatActivable activable = new BiomesEtatActivable();
     public BiomesEtatCultivable cultivable = new BiomesEtatCultivable();
+    
+    public GameObject point{ get; set;}
 
     public Material biomeMateriel{ get; set;}
 
@@ -17,6 +19,7 @@ public class BiomesEtatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        point.GetComponent<SystemeDePoint>().SetMaxPoint(20);
         ChangerEtat(activable);
     }
 
