@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnnemiTourelle : MonoBehaviour
 {
+    [SerializeField] AudioClip ennemiMeurt;
     bool tourner = true;
     public Animator animator;
     public Rigidbody rb;
@@ -16,11 +17,14 @@ public class EnnemiTourelle : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "objet"){
-            // Debug.Log("la toureelle est rentrer en contact avec un biome transformer");
+            Debug.Log("la toureelle est rentrer en contact avec un biome transformer");
             tourner = false;
             StartCoroutine(DeclencherAttaque());
+        }
 
-            
+         if(other.tag == "attaque"){
+            SoundManager.instance.JouerSon(ennemiMeurt);
+            Destroy(gameObject);
         }
     }
 
@@ -31,10 +35,16 @@ public class EnnemiTourelle : MonoBehaviour
         animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(2.8f);
         //instantier boule
+        
         GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+2, transform.position.z), Quaternion.identity);
+        boule.transform.SetParent(this.transform);
+        boule.transform.rotation = Quaternion.identity;
+       
         yield return new WaitForSeconds(1f);
         rb = boule.GetComponent<Rigidbody>();
-        rb.AddForce(0,-0.4f,10f, ForceMode.Impulse);
+        // rb.AddForce(0,0f,10f, ForceMode.Impulse);
+        rb.AddForce(transform.forward * 1f);
+       
         yield return new WaitForSeconds(1f);
         //lancer boule
 

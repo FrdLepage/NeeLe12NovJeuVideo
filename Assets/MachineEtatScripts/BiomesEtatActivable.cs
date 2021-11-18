@@ -10,7 +10,7 @@ public class BiomesEtatActivable : BiomesEtatsBase
   
   public override void InitEtat(BiomesEtatsManager biome)
   {
-      // Debug.Log("allo activable");
+      Debug.Log("allo activable");
   }
   public override void UpdateEtat(BiomesEtatsManager biome)
   {
@@ -21,6 +21,8 @@ public class BiomesEtatActivable : BiomesEtatsBase
     if(other.tag == "Player"){
       biome.StartCoroutine(bob(biome));
     }
+
+
 
   }
 
@@ -113,8 +115,11 @@ public class BiomesEtatActivable : BiomesEtatsBase
     position = biome.transform.position;
     if(biome.biomeItem != null){
       biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0.1f,0.1f,0.1f);
+      biome.biomeItem.tag= "objet";
 
     }
+
+
     // GameObject champignons = GameObject.Instantiate(Resources.Load("items/champignons"), position, Quaternion.identity) as GameObject;
     biome.ChangerEtat(biome.cultivable);
     

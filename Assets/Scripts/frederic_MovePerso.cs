@@ -5,6 +5,9 @@ using UnityEngine;
 public class frederic_MovePerso : MonoBehaviour
 {
     [SerializeField] AudioClip persoAttaque;
+    [SerializeField] AudioClip persoMarche;
+    [SerializeField] AudioClip persoSaut;
+    [SerializeField] AudioClip persoAtteri;
     [SerializeField] private float vitesseMouvement=20.0f;
     [SerializeField] private float vitesseRotation=20.0f;
     [SerializeField] private float impulsionSaut=20.0f;
@@ -15,8 +18,10 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] private GameObject ChampDeForce;
 
     private float vitesseSaut;
+    
 
     private GameObject attaque;
+    private AudioSource _audio;
     private Vector3 directionsMouvement= Vector3.zero;
     private bool peutAttaquer = true;
 
@@ -27,6 +32,10 @@ public class frederic_MovePerso : MonoBehaviour
     {
         animator=GetComponent<Animator>();
         controller=GetComponent<CharacterController>();
+        _audio = GetComponent<AudioSource>();
+       
+        
+        
     }
 
     // Update is called once per frame
@@ -41,12 +50,20 @@ public class frederic_MovePerso : MonoBehaviour
         transform.Rotate(0,vitesseRotation*Input.GetAxis("Horizontal"),0);
 
         //la vitesse s'active par la multiplation puisque Input.GetAxis("Vertical") est à 0 et quand le joueur clic sur les flèche du haut Input.GetAxis("Vertical") se dirige vers le 1
-        float vitesse=vitesseMouvement*Input.GetAxis("Vertical");
+        float vitesse=vitesseMouvement*Input.GetAxis("Vertical"); 
+
+       
+        if(!Input.GetButton("Vertical") || !_audio.isPlaying){
+            _audio.Play();
+        }
+
+        
 
         //quand le joueur clic sur les flèches du haut l'animation course démarre
         // animator.SetBool("enCourse",vitesse>0);
 
         animator.SetFloat("vitesseX", vitesse);
+        
         
         animator.SetFloat("vitesseY", Input.GetAxis("Jump"));
 
@@ -57,7 +74,10 @@ public class frederic_MovePerso : MonoBehaviour
         directionsMouvement= transform.TransformDirection(directionsMouvement);
 
         //si le joueur clic sur le bouton jump et il est au sol
-        if ( Input.GetButton("Jump")&&controller.isGrounded) vitesseSaut=impulsionSaut;
+        if ( Input.GetButton("Jump")&&controller.isGrounded) {
+            vitesseSaut=impulsionSaut;
+            SoundManager.instance.JouerSon(persoSaut);
+            }
             //active l'animation du saut si le joueur n'est pas par terre et si la vitesse du saut est plus grande
             // animator.SetBool("enSaut",!controller.isGrounded&&vitesseSaut>-impulsionSaut);
 
@@ -77,8 +97,17 @@ public class frederic_MovePerso : MonoBehaviour
 
     }
 
+    
     void Attaque(){
     Instantiate(attaque,transform.position, Quaternion.identity);
+    }
+
+    private IEnumerator SonMarche(float vitesse){
+        while(vitesse > 0 ){
+        SoundManager.instance.JouerSon(persoMarche);
+
+        }
+        yield return null;
     }
 
     private IEnumerator Sphere (){

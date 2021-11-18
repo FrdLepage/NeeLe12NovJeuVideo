@@ -45,4 +45,5 @@ public class SoundManager : MonoBehaviour
     {
         if (_audio != null) _audio.PlayOneShot(clip);
     }
+
 }

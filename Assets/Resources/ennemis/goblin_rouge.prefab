@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bdb2a1035b1464288a3837527f61b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ennemiMeurt: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
 --- !u!195 &-1108777932224088645
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 20}
-  m_Center: {x: 0, y: 0, z: 10}
+  m_Center: {x: 0, y: 1, z: 10}
 --- !u!95 &1914470619068570707
 Animator:
   serializedVersion: 3
@@ -60,7 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d789aab0802efd469db539c2cb2e381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ennemiMeurt: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
   animator: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &9192776969880513416
 GameObject:
   m_ObjectHideFlags: 0
