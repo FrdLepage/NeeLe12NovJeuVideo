@@ -240,7 +240,7 @@ public class Generateur : MonoBehaviour
                
                 int SpawnItem = Random.Range(0,15);
                 if(SpawnItem==1&&quelBiome<4){
-                GameObject unItem = Instantiate(items[quelBiome][variantItem],new Vector3( unCube.transform.position.x,unCube.transform.position.y,unCube.transform.position.z),Quaternion.identity);
+                GameObject unItem = Instantiate(items[quelBiome][variantItem],new Vector3( unCube.transform.position.x,unCube.transform.position.y+0.5f,unCube.transform.position.z),Quaternion.identity);
                 unCube.GetComponent<BiomesEtatsManager>().biomeItem = unItem;
                 }
                 unCube.GetComponent<BiomesEtatsManager>().point = point;
