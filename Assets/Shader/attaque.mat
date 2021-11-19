@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Texture2D:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a75115f7c0b8ee94c96c22d06ab37d2b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -38,5 +38,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - couleur_glow: {r: 0.017837398, g: 0, b: 0.021839377, a: 1}
+    - couleur_glow: {r: 0.9098039, g: 0, b: 1.388235, a: 0}
   m_BuildTextureStacks: []
