@@ -43,6 +43,11 @@ public class frederic_MovePerso : MonoBehaviour
        }
     }
 
+    private void OnParticleCollision(){
+        //******mettre ligne pour perdre la vie
+        Debug.Log("collision perso et particules");
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -34,6 +34,7 @@ public class BiomesEtatsManager : MonoBehaviour
     void Update()
     {
         etatActuel.UpdateEtat(this);
+    
     }
   
     

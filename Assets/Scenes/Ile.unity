@@ -191,6 +191,7 @@ MonoBehaviour:
   largeurIle: 300
   profondeurIle: 300
   cube: {fileID: 2153888550326603376, guid: e7ada5bcb94c8bb4fb660e70c1c19ef6, type: 3}
+  finJeu: 0
   newColor: {r: 0, g: 0, b: 0, a: 0}
   textureRenderer: {fileID: 451336559}
   attenuateur: 50
@@ -1499,7 +1500,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101622814}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &1288783603
 GameObject:
   m_ObjectHideFlags: 0

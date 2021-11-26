@@ -12,11 +12,13 @@ public class Generateur : MonoBehaviour
     public int largeurIle = 10;
     public int profondeurIle = 10;
     public GameObject cube;
+    public bool finJeu = false;
     public Color newColor;
     private List<List<Material>> biomes = new List<List<Material>>();
     private List<List<GameObject>> items = new List<List<GameObject>>();
 
     public Renderer textureRenderer;
+ 
     public float attenuateur;
     public GameObject point;
     private Object mats; 
@@ -34,6 +36,7 @@ public class Generateur : MonoBehaviour
         GetComponent<NavMeshSurface>().BuildNavMesh();
         InvokeRepeating("Timer",1.0f,1.0f);
     }
+
     private void Timer() {
         if(_timer==0){
             SceneManager.LoadScene("GameOver");
@@ -42,6 +45,8 @@ public class Generateur : MonoBehaviour
         _compteur.text=_timer.ToString();
         }
     }
+
+    
 
     void GenererListeItems()
     {
