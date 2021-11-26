@@ -24,8 +24,6 @@ public class frederic_MovePerso : MonoBehaviour
     private AudioSource _audio;
     private Vector3 directionsMouvement= Vector3.zero;
     private bool peutAttaquer = true;
-
-    [SerializeField] private GameObject vie;
     Animator animator;
     CharacterController controller;
     // Start is called before the first frame update
@@ -34,9 +32,6 @@ public class frederic_MovePerso : MonoBehaviour
         animator=GetComponent<Animator>();
         controller=GetComponent<CharacterController>();
         _audio = GetComponent<AudioSource>();
-        
-        vie.GetComponent<SystemeDePoint>().SetMaxPoint(20);
-        vie.GetComponent<SystemeDePoint>().currentPoint=20;
         
     }
     private void OnCollisionEnter(Collision other)
