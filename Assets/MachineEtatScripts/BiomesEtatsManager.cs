@@ -35,12 +35,34 @@ public class BiomesEtatsManager : MonoBehaviour
     {
         etatActuel.UpdateEtat(this);
     }
-
+  
     
     private void OnTriggerEnter(Collider other)
     {
+           if(other.tag == "Boule"){
+            
+               StartCoroutine(Boule());
+             
+        }
         
         etatActuel.TriggerEnterEtat(this,other);
+    }
+
+    private IEnumerator Boule(){
+        // var p = gameObject.AddComponent<ParticleSystem>();
+        var particules = Resources.Load("particules") as GameObject;
+        Instantiate(particules, transform.position, Quaternion.identity);
+
+        // GetComponent<Renderer>().material = Resources.Load("materiaux/main_cristal") as Material;
+
+        // yield return new WaitForSeconds(10f);
+
+        // ParticleSystem ps = GetComponent<ParticleSystem>();
+        // ps.Clear();
+        // var em = ps.emission;
+        // em.enabled = false;
+
+        yield return null;
     }
 
 

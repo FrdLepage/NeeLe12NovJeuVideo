@@ -7,6 +7,7 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
 {
   
     private EnnemiEtatsBaseRouge etatActuel;
+    private int nbVies =3;
     [SerializeField] AudioClip ennemiMeurt;
     public EnnemiEtatReposRouge repos = new EnnemiEtatReposRouge();
     public EnnemiEtatPromenadeRouge promenade = new EnnemiEtatPromenadeRouge();
@@ -33,8 +34,13 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
     {
      
         if(other.tag == "attaque"){
+            if(nbVies > 0){
             SoundManager.instance.JouerSon(ennemiMeurt);
+            nbVies--;
+            }
+            if(nbVies==0){
             Destroy(gameObject);
+            }
         }
 
         if(other.tag == "Player"){

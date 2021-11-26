@@ -9,6 +9,7 @@ TagManager:
   - Boule
   - objet
   - Lave
+  - Cube
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class BouleFeu : MonoBehaviour
     }
      void OnTriggerEnter(Collider other)
     {
-       
+     
     }
 
     // Update is called once per frame

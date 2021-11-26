@@ -26,13 +26,7 @@ public class BiomesEtatCultivable : BiomesEtatsBase
         GameObject.Destroy(biome.biomeItem);
       }
 
-    if(other.tag == "Boule"){
-      Debug.Log("boule touche sol");
-      int v = Random.Range(1,5);
-      biome.GetComponent<Renderer>().material = Resources.Load("materiaux/d1_" +v) as Material;
-      biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0f,0f,0f);
-      biome.ChangerEtat(biome.activable);
-    }
+   
 
    
 

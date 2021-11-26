@@ -226,8 +226,7 @@ public class Generateur : MonoBehaviour
         int tirage = 1;
         int tirageRouge = 1;
         int allier = 1;
-        int npc = 1;
-
+     
         for (int z = 0; z < prof; z++)
         {
             for (int x = 0; x < larg; x++)
@@ -276,31 +275,18 @@ public class Generateur : MonoBehaviour
                 Vector3 position = new Vector3(0,0,0);
                 tirage++;
                 allier++;
-                npc++;
+        
                 tirageRouge++;
 
                 if(tirage == 3000){
 
-                GameObject ennemi = Instantiate((GameObject)Resources.Load("ennemis/ennemi"));
+                GameObject ennemi = ((GameObject)Resources.Load("ennemis/ennemi"));
                 // unAgent.GetComponent<EnnemiEtatsManager>().cible = perso;
                 // unAgent.GetComponent<EnnemiEtatsManager>().origine = unCube.transform;
                 //trouver la position du cube
                 position = unCube.transform.position;
                 //spawn prefab at position
                 Instantiate(ennemi, position, Quaternion.identity);
-                tirage = 0;
-                }
-
-                if(npc == 3500){
-
-                position = unCube.transform.position;
-                GameObject Npc = Instantiate((GameObject)Resources.Load("NPC"), new Vector3(position.x, position.y, position.z), Quaternion.identity);
-          
-                //trouver la position du cube
-                //spawn prefab at position
-                Npc.GetComponent<NpcEtatsManager>().cible = perso;
-                Npc.GetComponent<NpcEtatsManager>().origine = unCube.transform;
-                npc = 0;
                 }
 
 
@@ -312,6 +298,8 @@ public class Generateur : MonoBehaviour
                 GameObject unAllier = Instantiate((GameObject)Resources.Load("feeSpawn"), new Vector3(unCube.transform.position.x, unCube.transform.position.y, unCube.transform.position.z), Quaternion.identity);
                 unAllier.GetComponent<AllierEtatManager>().cible = perso;
                 unAllier.GetComponent<AllierEtatManager>().origine = unCube.transform;
+                unAllier.GetComponent<AllierEtatManager>().systemePoint = unCube.GetComponent<BiomesEtatsManager>().point;
+         
                 //trouver la position du cube
                 position = unCube.transform.position;
                 allier = 0;

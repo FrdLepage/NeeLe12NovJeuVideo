@@ -7,6 +7,8 @@ public class EnnemiEtatsManager : MonoBehaviour
 {
   
     private EnnemiEtatsBase etatActuel;
+    [SerializeField] AudioClip ennemiMeurt;
+    private int nbVies = 3;
     public EnnemiEtatRepos repos = new EnnemiEtatRepos();
     public EnnemiEtatPromenade promenade = new EnnemiEtatPromenade();
     public EnnemiEtatChasse chasse = new EnnemiEtatChasse();
@@ -31,7 +33,13 @@ public class EnnemiEtatsManager : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "attaque"){
+            if(nbVies > 0){
+            SoundManager.instance.JouerSon(ennemiMeurt);
+            nbVies--;
+            }
+            if(nbVies==0){
             Destroy(gameObject);
+            }
             
         }
     }

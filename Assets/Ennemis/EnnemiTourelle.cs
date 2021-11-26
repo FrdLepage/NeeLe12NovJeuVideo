@@ -14,39 +14,35 @@ public class EnnemiTourelle : MonoBehaviour
         StartCoroutine(bouger());
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "objet"){
-            Debug.Log("la toureelle est rentrer en contact avec un biome transformer");
-            tourner = false;
-            StartCoroutine(DeclencherAttaque());
-        }
-
-         if(other.tag == "attaque"){
-            SoundManager.instance.JouerSon(ennemiMeurt);
-            Destroy(gameObject);
-        }
-    }
+  
 
     private IEnumerator DeclencherAttaque(){
 
         //animation
         animator = GetComponent<Animator>();
-        animator.SetBool("isAttacking", true);
+        // animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(2.8f);
         //instantier boule
         
-        GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+2, transform.position.z), Quaternion.identity);
+        GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+3, transform.position.z), Quaternion.identity);
         boule.transform.SetParent(this.transform);
         boule.transform.rotation = Quaternion.identity;
        
         yield return new WaitForSeconds(1f);
         rb = boule.GetComponent<Rigidbody>();
-        // rb.AddForce(0,0f,10f, ForceMode.Impulse);
+        // rb.AddForce(0,-0.2f,1f, ForceMode.Impulse);
         rb.AddForce(transform.forward * 1f);
+        rb.AddForce(-transform.up * 0.2f);
+        tourner = true;
+        boule.transform.SetParent(null);
+        StartCoroutine(bouger());
+        
+
+
        
         yield return new WaitForSeconds(1f);
-        //lancer boule
+      
+
 
     }
 
@@ -56,6 +52,7 @@ public class EnnemiTourelle : MonoBehaviour
     float endRotation = startRotation + 360.0f;
     float t = 0.0f;
     float duration = 10f;
+    float delai = 0f;
     
 
 
@@ -68,11 +65,20 @@ public class EnnemiTourelle : MonoBehaviour
         //  transform.eulerAngles.z);
 
          transform.Rotate(new Vector3(0, -1, 0), 20f * Time.deltaTime);
+         delai++;
+         
+           if(delai>300){
+            Debug.Log("la toureelle doit arretter et lancer");
+            tourner = false;
+            delai = 0;
+            StartCoroutine(DeclencherAttaque());
 
-        
-      
+
+     }
          yield return null;
      }
+
+   
         
 
         

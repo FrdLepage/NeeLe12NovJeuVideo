@@ -9,16 +9,20 @@ public class AllierEtatManager : MonoBehaviour
     private AllierEtatBase etatActuel;
     public AllierEtatRepos repos = new AllierEtatRepos();
     public AllierEtatChasse chasse = new AllierEtatChasse();
-
+    
     public GameObject cible {get;set;}
+    public GameObject systemePoint {get;set;}
     public Transform origine {get;set;}
 
     public NavMeshAgent agent{ get; set;}
 
     void Start()
     {
+        
+        // BiomesEtatsManager.point.GetComponent<SystemeDePoint>()
         agent = GetComponent<NavMeshAgent>();
         ChangerEtat(repos);
+     
     }
 
     public void ChangerEtat(AllierEtatBase etat)

@@ -17,6 +17,7 @@ public class AllierEtatChasse : AllierEtatBase
       //trouve la cible et la met en destination de L'agent
       allier.agent.destination = allier.cible.transform.position;
 
+
     
     yield return new WaitForSeconds(3f);
 
