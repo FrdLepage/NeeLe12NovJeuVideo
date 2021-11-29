@@ -230,7 +230,6 @@ public class Generateur : MonoBehaviour
         //tirage de 1/20
         int tirage = 1;
         int tirageRouge = 1;
-        int allier = 1;
      
         for (int z = 0; z < prof; z++)
         {
@@ -279,7 +278,6 @@ public class Generateur : MonoBehaviour
                 //si gagne tirage
                 Vector3 position = new Vector3(0,0,0);
                 tirage++;
-                allier++;
         
                 tirageRouge++;
 
@@ -292,22 +290,6 @@ public class Generateur : MonoBehaviour
                 position = unCube.transform.position;
                 //spawn prefab at position
                 Instantiate(ennemi, position, Quaternion.identity);
-                }
-
-
-
-
-
-                if(allier == 2000){
-
-                GameObject unAllier = Instantiate((GameObject)Resources.Load("feeSpawn"), new Vector3(unCube.transform.position.x, unCube.transform.position.y, unCube.transform.position.z), Quaternion.identity);
-                unAllier.GetComponent<AllierEtatManager>().cible = perso;
-                unAllier.GetComponent<AllierEtatManager>().origine = unCube.transform;
-                unAllier.GetComponent<AllierEtatManager>().systemePoint = unCube.GetComponent<BiomesEtatsManager>().point;
-         
-                //trouver la position du cube
-                position = unCube.transform.position;
-                allier = 0;
                 }
 
 
