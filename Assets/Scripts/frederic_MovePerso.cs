@@ -12,15 +12,13 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] private float vitesseRotation=20.0f;
     [SerializeField] private float impulsionSaut=20.0f;
     [SerializeField] private float gravite=20.0f;
-    // [SerializeField] private GameObject attaque;
     [SerializeField] private Camera cameraDuJoueur;
 
     [SerializeField] private GameObject ChampDeForce;
 
     private float vitesseSaut;
-    
 
-    private GameObject attaque;
+    [SerializeField] private GameObject fee;
     private AudioSource _audio;
     private Vector3 directionsMouvement= Vector3.zero;
     private bool peutAttaquer = true;
@@ -54,9 +52,9 @@ public class frederic_MovePerso : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && peutAttaquer == true){
             peutAttaquer = false;
             animator.SetTrigger("attaque");
-            StartCoroutine(Sphere());
+            StartCoroutine(Fee());
         }
-//le joueur quand il clic sur les flèches à gauche ou à droite le joueur se tourne soit vers la gauche ou la droite
+        //le joueur quand il clic sur les flèches à gauche ou à droite le joueur se tourne soit vers la gauche ou la droite
         transform.Rotate(0,vitesseRotation*Input.GetAxis("Horizontal"),0);
 
         //la vitesse s'active par la multiplation puisque Input.GetAxis("Vertical") est à 0 et quand le joueur clic sur les flèche du haut Input.GetAxis("Vertical") se dirige vers le 1
@@ -70,7 +68,7 @@ public class frederic_MovePerso : MonoBehaviour
         
 
         //quand le joueur clic sur les flèches du haut l'animation course démarre
-        // animator.SetBool("enCourse",vitesse>0);
+        //animator.SetBool("enCourse",vitesse>0);
 
         animator.SetFloat("vitesseX", vitesse);
         
@@ -107,46 +105,20 @@ public class frederic_MovePerso : MonoBehaviour
 
     }
 
-    
-    void Attaque(){
-    Instantiate(attaque,transform.position, Quaternion.identity);
-    }
-
     private IEnumerator SonMarche(float vitesse){
         while(vitesse > 0 ){
         SoundManager.instance.JouerSon(persoMarche);
-
         }
         yield return null;
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //      if(other.gameObject.CompareTag("Lave")){
-    //         transform.position=new Vector3(107.5f,41.7f,99.5f);
-    //     }
-    // }
-    private IEnumerator Sphere (){
+    
+    private IEnumerator Fee (){
+        Instantiate(fee,transform.position, Quaternion.identity);
         SoundManager.instance.JouerSon(persoAttaque);
-        yield return new WaitForSeconds(1f);
-        attaque = Resources.Load("Sphere") as GameObject;
-        var Sphere = Instantiate(attaque,transform.position, Quaternion.identity);
-        Sphere.GetComponent<Transform>().localScale = new Vector3(0,0,0);
-      
-        float scale = 0;
+        yield return new WaitForSeconds(10f);
 
-        while(scale <= 20){
-            scale+=Time.deltaTime+3;
-          
-            // attaque.GetComponent<Transform>().localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(20,20,20), scale);
-            Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale/1.5f, scale);
-
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.2f);
-        Destroy(Sphere);
-
-        peutAttaquer = true;
+        
         yield return null;
     }
 }
