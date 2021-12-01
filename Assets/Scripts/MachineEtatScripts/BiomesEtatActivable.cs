@@ -115,7 +115,7 @@ public class BiomesEtatActivable : BiomesEtatsBase
     position = biome.transform.position;
     if(biome.biomeItem != null){
       biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0.1f,0.1f,0.1f);
-      biome.biomeItem.tag= "objet";
+      // biome.biomeItem.tag= "objet";
 
     }
 
