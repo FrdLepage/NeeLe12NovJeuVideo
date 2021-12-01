@@ -20,19 +20,19 @@ public class EnnemiTourelle : MonoBehaviour
 
         //animation
         animator = GetComponent<Animator>();
-        // animator.SetBool("isAttacking", true);
+        animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(2.8f);
         //instantier boule
         
-        GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+3, transform.position.z), Quaternion.identity);
+        GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+5, transform.position.z), Quaternion.identity);
         boule.transform.SetParent(this.transform);
         boule.transform.rotation = Quaternion.identity;
        
         // yield return new WaitForSeconds(1f);
         rb = boule.GetComponent<Rigidbody>();
         // rb.AddForce(0,-0.2f,1f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 100f);
-        rb.AddForce(transform.forward * 2f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 200f);
+        rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
         tourner = true;
         boule.transform.SetParent(null);
         StartCoroutine(bouger());
@@ -67,7 +67,7 @@ public class EnnemiTourelle : MonoBehaviour
          transform.Rotate(new Vector3(0, -1, 0), 20f * Time.deltaTime);
          delai++;
          
-           if(delai>100){
+           if(delai>300){
             Debug.Log("la toureelle doit arretter et lancer");
             tourner = false;
             delai = 0;

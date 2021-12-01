@@ -9,6 +9,9 @@ public class Generateur : MonoBehaviour
 {
     // [SerializeField] GameObject ennemi;
     [SerializeField] GameObject perso;
+    [SerializeField] Material eau;
+    [SerializeField] Material lave;
+    
     public int largeurIle = 10;
     public int profondeurIle = 10;
     public GameObject cube;
@@ -18,11 +21,13 @@ public class Generateur : MonoBehaviour
     private List<List<GameObject>> items = new List<List<GameObject>>();
 
     public Renderer textureRenderer;
+   
  
     public float attenuateur;
     public GameObject point;
     private Object mats; 
     private GameObject its; 
+    
     [SerializeField] private Text _compteur; 
     private float _timer=600.0f;//Pour savoir le temps du timer au départ
     public int coefAltitude = 10;
@@ -35,6 +40,8 @@ public class Generateur : MonoBehaviour
         CreerMap();
         GetComponent<NavMeshSurface>().BuildNavMesh();
         InvokeRepeating("Timer",1.0f,1.0f);
+        textureRenderer.GetComponent<Renderer>().material = lave;
+        
     }
 
     private void Timer() {
@@ -146,6 +153,15 @@ public class Generateur : MonoBehaviour
         //tant qu'il y a des materiaux a ajouter
         while (resteDesMats);
 
+    }
+
+    void RetourIle(){
+        // textureRenderer.sharedMaterial.GetTexture
+        //Material eau = Resources.Load("eau");
+        Debug.Log("eau");
+        textureRenderer.GetComponent<Renderer>().material = eau;
+ 
+     
     }
 
     void CreerMap(){
@@ -295,7 +311,7 @@ public class Generateur : MonoBehaviour
 
                 // tirageRouge++;
 
-                if(tirageRouge == 2200){
+                if(tirageRouge == 4200){
 
                 GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+1, unCube.transform.position.z), Quaternion.identity);
                 unAgent.GetComponent<EnnemiEtatsManagerRouge>().cible = perso;
@@ -343,7 +359,8 @@ public class Generateur : MonoBehaviour
         //dessine la texture
         // ileTexture.SetPixels(couleursTexture);
         // ileTexture.Apply();
-        // textureRenderer.sharedMaterial.mainTexture = ileTexture;
+        //textureRenderer.sharedMaterial.mainTexture = ileTexture;
+        
         //la texture est transformer selon les dimensions de l'ile
         textureRenderer.transform.localScale = new Vector3(largeurIle, 1f, profondeurIle);
 
