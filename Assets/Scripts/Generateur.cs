@@ -9,6 +9,7 @@ public class Generateur : MonoBehaviour
 {
     // [SerializeField] GameObject ennemi;
     [SerializeField] GameObject perso;
+    [SerializeField] AudioClip fin;
     [SerializeField] Material eau;
     [SerializeField] Material matFin;
     [SerializeField] Material lave;
@@ -159,7 +160,7 @@ public class Generateur : MonoBehaviour
 
     void Update()
     {
-        if(point.GetComponent<SystemeDePoint>().slider.value == 8){
+        if(point.GetComponent<SystemeDePoint>().slider.value == 50){
             StartCoroutine(RetourIle());
         }
         
@@ -170,9 +171,11 @@ public class Generateur : MonoBehaviour
         // textureRenderer.sharedMaterial.GetTexture
         //Material eau = Resources.Load("eau");
         Debug.Log("eau");
+        SoundManager.instance.JouerSon(fin);
         textureRenderer.GetComponent<Renderer>().material = eau;
          Rend = this.GetComponentsInChildren<Renderer>();
-          foreach (Renderer rend in Rend) rend.material = matFin;
+        foreach (Renderer rend in Rend) rend.material = matFin;
+        yield return new WaitForSeconds(3f);
 
         
        

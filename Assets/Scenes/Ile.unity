@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perso: {fileID: 919132147594579103}
+  fin: {fileID: 8300000, guid: 8cfd7e380579e8a46b9c079d43da17b7, type: 3}
   eau: {fileID: 2100000, guid: 89beea273040d824da3da2044b76d31e, type: 2}
   matFin: {fileID: 2100000, guid: 2fae534b13d6e074dad4076c5110deeb, type: 2}
   lave: {fileID: 2100000, guid: 8b226facf5234b649a83d2f4173785e0, type: 2}
