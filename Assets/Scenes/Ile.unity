@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 0}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9ea7f4cba90b6e443b5440257e456976, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perso: {fileID: 919132147594579103}
   fin: {fileID: 8300000, guid: 8cfd7e380579e8a46b9c079d43da17b7, type: 3}
-  eau: {fileID: 2100000, guid: 89beea273040d824da3da2044b76d31e, type: 2}
+  eau: {fileID: 2100000, guid: e61c6af1d43a8c441ba1136786d13996, type: 2}
   matFin: {fileID: 2100000, guid: 2fae534b13d6e074dad4076c5110deeb, type: 2}
   lave: {fileID: 2100000, guid: 8b226facf5234b649a83d2f4173785e0, type: 2}
   largeurIle: 150
@@ -1441,7 +1441,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4c61dde79e63c3845a08928954e7ce39, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2606,6 +2606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf745f0ae142374a982f6772b49fc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persoDegat: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
   hearts:
   - {fileID: 557976738}
   - {fileID: 1403923447}
@@ -2834,6 +2835,10 @@ PrefabInstance:
       propertyPath: persoSaut
       value: 
       objectReference: {fileID: 8300000, guid: cb370edc71f957b48901758d16468b4a, type: 3}
+    - target: {fileID: 2201359545335330064, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
+      propertyPath: persoDegat
+      value: 
+      objectReference: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
     - target: {fileID: 2201359545335330064, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
       propertyPath: persoAtteri
       value: 

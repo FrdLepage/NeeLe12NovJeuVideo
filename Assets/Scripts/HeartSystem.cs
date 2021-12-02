@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class HeartSystem : MonoBehaviour
 {
+    [SerializeField] AudioClip persoDegat;
     public GameObject[] hearts;
     private int life;
     private bool dead;
@@ -24,6 +25,7 @@ public class HeartSystem : MonoBehaviour
         if (life>=1)
         {
             life -= d;
+            SoundManager.instance.JouerSon(persoDegat);
             Destroy(hearts[life].gameObject);
             if(life < 1)
             {

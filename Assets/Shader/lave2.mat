@@ -33,11 +33,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - densite_reflet: -20.95
-    - epaisseur_reflet: 8.79
+    - densite_reflet: 100
+    - epaisseur_reflet: 5
     - vitesse_reflet: 1.5
     - vitesse_vague: 0.1
     m_Colors:
     - couleur_eau: {r: 1, g: 0.14288326, b: 0, a: 1}
-    - couleur_reflet: {r: 3.441591, g: 1.270986, b: 0, a: 1}
+    - couleur_reflet: {r: 3.4415908, g: 0.2162256, b: 0, a: 1}
   m_BuildTextureStacks: []
