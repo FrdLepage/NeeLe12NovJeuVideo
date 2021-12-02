@@ -34,6 +34,8 @@ public class BiomesEtatsManager : MonoBehaviour
     void Update()
     {
         etatActuel.UpdateEtat(this);
+      
+ 
     
     }
   
@@ -49,6 +51,7 @@ public class BiomesEtatsManager : MonoBehaviour
         etatActuel.TriggerEnterEtat(this,other);
     }
 
+   
     private IEnumerator Boule(){
         // var p = gameObject.AddComponent<ParticleSystem>();
         var particules = Resources.Load("particules") as GameObject;

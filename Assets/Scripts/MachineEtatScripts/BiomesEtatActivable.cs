@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BiomesEtatActivable : BiomesEtatsBase
 {
-  
+  public GameObject point{ get; set;}
   float rotationT = 0.0f;
   float duration = 0.3f;
  
@@ -14,6 +14,7 @@ public class BiomesEtatActivable : BiomesEtatsBase
   }
   public override void UpdateEtat(BiomesEtatsManager biome)
   {
+ 
 
   }
   public override void TriggerEnterEtat(BiomesEtatsManager biome, Collider other)
@@ -22,14 +23,18 @@ public class BiomesEtatActivable : BiomesEtatsBase
       biome.StartCoroutine(bob(biome));
     }
 
-
-
   }
+
+
+
+     private IEnumerator RetransformerBiomes(){
+        yield return null;
+    }
+
+
 
   private IEnumerator bob(BiomesEtatsManager biome){
     
-    
-     
       // var em = ps.emission;
       
 

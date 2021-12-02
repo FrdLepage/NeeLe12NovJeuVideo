@@ -10,6 +10,7 @@ public class Generateur : MonoBehaviour
     // [SerializeField] GameObject ennemi;
     [SerializeField] GameObject perso;
     [SerializeField] Material eau;
+    [SerializeField] Material matFin;
     [SerializeField] Material lave;
     
     public int largeurIle = 10;
@@ -24,6 +25,7 @@ public class Generateur : MonoBehaviour
    
  
     public float attenuateur;
+     public Component[] Rend;
     public GameObject point;
     private Object mats; 
     private GameObject its; 
@@ -157,7 +159,7 @@ public class Generateur : MonoBehaviour
 
     void Update()
     {
-        if(point.GetComponent<SystemeDePoint>().slider.value == 50){
+        if(point.GetComponent<SystemeDePoint>().slider.value == 8){
             StartCoroutine(RetourIle());
         }
         
@@ -169,6 +171,11 @@ public class Generateur : MonoBehaviour
         //Material eau = Resources.Load("eau");
         Debug.Log("eau");
         textureRenderer.GetComponent<Renderer>().material = eau;
+         Rend = this.GetComponentsInChildren<Renderer>();
+          foreach (Renderer rend in Rend) rend.material = matFin;
+
+        
+       
         //inserer la ligne pour aller a la scene de fin(reussi)
         yield return null;
 
