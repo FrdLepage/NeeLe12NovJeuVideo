@@ -24,14 +24,13 @@ public class Generateur : MonoBehaviour
 
     public Renderer textureRenderer;
    
- 
+    public Slider sliderTemps;
+    public int currentTime;
     public float attenuateur;
      public Component[] Rend;
     public GameObject point;
     private Object mats; 
     private GameObject its; 
-    
-    [SerializeField] private Text _compteur; 
     private float _timer=600.0f;//Pour savoir le temps du timer au départ
     public int coefAltitude = 10;
     // public Color[] biomesCouleurs;
@@ -44,15 +43,17 @@ public class Generateur : MonoBehaviour
         GetComponent<NavMeshSurface>().BuildNavMesh();
         InvokeRepeating("Timer",1.0f,1.0f);
         textureRenderer.GetComponent<Renderer>().material = lave;
+        currentTime=500;
+        sliderTemps.maxValue = currentTime;
         
     }
 
     private void Timer() {
-        if(_timer==0){
+        if(currentTime==0){
             SceneManager.LoadScene("GameOver");
         }else{
-        _timer--;
-        _compteur.text=_timer.ToString();
+        currentTime--;
+        sliderTemps.value=currentTime;
         }
     }
 

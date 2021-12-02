@@ -128,10 +128,11 @@ public class frederic_MovePerso : MonoBehaviour
     private IEnumerator Fee (){
         Instantiate(fee,transform.position, Quaternion.identity);
         SoundManager.instance.JouerSon(persoAttaque);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
 
-        
-        Destroy(fee);
+        peutAttaquer = true;
+        DestroyImmediate(fee, true);
+        yield return null;
     }
 
 
