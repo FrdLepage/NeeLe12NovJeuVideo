@@ -14,6 +14,7 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
     public EnnemiEtatChasseRouge chasse = new EnnemiEtatChasseRouge();
 
     public GameObject cible {get;set;}
+    public GameObject cibleFee {get;set;}
     public Transform origine {get;set;}
 
     public NavMeshAgent agent{ get; set;}
