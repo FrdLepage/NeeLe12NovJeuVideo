@@ -13,5 +13,6 @@ public class SystemeDePoint : MonoBehaviour
     
     public void SetPoint(){
         slider.value=currentPoint;
+        Debug.Log(slider.value);
     }
 }

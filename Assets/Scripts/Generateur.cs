@@ -155,12 +155,24 @@ public class Generateur : MonoBehaviour
 
     }
 
-    void RetourIle(){
+    void Update()
+    {
+        if(point.GetComponent<SystemeDePoint>().slider.value == 50){
+            StartCoroutine(RetourIle());
+        }
+        
+    }
+    
+
+    private IEnumerator RetourIle(){
         // textureRenderer.sharedMaterial.GetTexture
         //Material eau = Resources.Load("eau");
         Debug.Log("eau");
         textureRenderer.GetComponent<Renderer>().material = eau;
- 
+        //inserer la ligne pour aller a la scene de fin(reussi)
+        yield return null;
+
+
      
     }
 

@@ -19,7 +19,7 @@ public class BiomesEtatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        point.GetComponent<SystemeDePoint>().SetMaxPoint(20);
+        point.GetComponent<SystemeDePoint>().SetMaxPoint(50);
         ChangerEtat(activable);
     }
 
