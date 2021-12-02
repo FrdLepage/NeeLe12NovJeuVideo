@@ -19,7 +19,7 @@ public class frederic_MovePerso : MonoBehaviour
     private float vitesseSaut;
     private bool peutPerdrevie = true;
 
-    [SerializeField] private GameObject fee;
+    [SerializeField] public GameObject fee;
     private AudioSource _audio;
     private Vector3 directionsMouvement= Vector3.zero;
     private bool peutAttaquer = true;
@@ -131,7 +131,7 @@ public class frederic_MovePerso : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         
-        yield return null;
+        Destroy(fee);
     }
 
 

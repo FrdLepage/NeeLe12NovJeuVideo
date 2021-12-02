@@ -337,6 +337,7 @@ public class Generateur : MonoBehaviour
 
                 GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+1, unCube.transform.position.z), Quaternion.identity);
                 unAgent.GetComponent<EnnemiEtatsManagerRouge>().cible = perso;
+                unAgent.GetComponent<EnnemiEtatsManagerRouge>().cibleFee = perso.GetComponent<frederic_MovePerso>().fee;
                 unAgent.GetComponent<EnnemiEtatsManagerRouge>().origine = unCube.transform;
                 //trouver la position du cube
                 position = unCube.transform.position;

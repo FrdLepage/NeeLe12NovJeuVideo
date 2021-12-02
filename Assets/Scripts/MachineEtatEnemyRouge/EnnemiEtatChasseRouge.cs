@@ -15,7 +15,12 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
       ennemi.agent.speed = 13f;
     
       //trouve la cible et la met en destination de L'agent
-    ennemi.agent.destination = ennemi.cible.transform.position;
+      if(Vector3.Distance(ennemi.transform.position, ennemi.cibleFee.transform.position)>30f) {
+        ennemi.agent.destination = ennemi.cibleFee.transform.position;
+      }else
+      {
+        ennemi.agent.destination = ennemi.cible.transform.position;  
+      }
 
     //path pending veut dire que ca a pas fini de calculer
 
