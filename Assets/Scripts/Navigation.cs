@@ -9,8 +9,10 @@ public class Navigation : MonoBehaviour
        SceneManager.LoadScene("Ile"); 
     }
     public void QuitterLejeu(){
-       Application.Quit();
+       SceneManager.LoadScene("Start");
     }
-    
+    public void QuitterApp(){
+      Application.Quit();
+    }
 
 }
