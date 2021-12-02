@@ -45,6 +45,7 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
 
         if(other.tag == "Player"){
             Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
+ 
         }
     }
 

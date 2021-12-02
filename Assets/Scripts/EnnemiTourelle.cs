@@ -27,6 +27,7 @@ public class EnnemiTourelle : MonoBehaviour
         GameObject boule = GameObject.Instantiate((GameObject)Resources.Load("BouleFeu"), new Vector3(transform.position.x, transform.position.y+5, transform.position.z), Quaternion.identity);
         boule.transform.SetParent(this.transform);
         boule.transform.rotation = Quaternion.identity;
+        animator.SetBool("isAttacking", false);
        
         // yield return new WaitForSeconds(1f);
         rb = boule.GetComponent<Rigidbody>();

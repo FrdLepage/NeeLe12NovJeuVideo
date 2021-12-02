@@ -17,6 +17,7 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] private GameObject ChampDeForce;
 
     private float vitesseSaut;
+    private bool peutPerdrevie = true;
 
     [SerializeField] private GameObject fee;
     private AudioSource _audio;
@@ -43,7 +44,18 @@ public class frederic_MovePerso : MonoBehaviour
 
     private void OnParticleCollision(){
         //******mettre ligne pour perdre la vie
+        StartCoroutine(PerdreVie());
         Debug.Log("collision perso et particules");
+    }
+
+    private IEnumerator PerdreVie(){
+        if(peutPerdrevie == true){
+            this.GetComponent<HeartSystem>().TakeDamage(1);
+            peutPerdrevie = false;
+        }
+        yield return new WaitForSeconds(4f);
+        peutPerdrevie = true;
+        yield return null;
     }
 
     // Update is called once per frame
@@ -120,5 +132,17 @@ public class frederic_MovePerso : MonoBehaviour
 
         
         yield return null;
+    }
+
+
+    
+
+    void OnTriggerEnter(Collider other)
+    {
+         if(other.tag == "EnnemiRouge"){
+           StartCoroutine(PerdreVie());
+            Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
+ 
+        }
     }
 }

@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 8941630561082773649}
   m_Layer: 0
   m_Name: goblin_rouge
-  m_TagString: Untagged
+  m_TagString: EnnemiRouge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

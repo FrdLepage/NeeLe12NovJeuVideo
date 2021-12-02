@@ -11,6 +11,7 @@ TagManager:
   - Lave
   - Cube
   - ItemCollect
+  - EnnemiRouge
   layers:
   - Default
   - TransparentFX
