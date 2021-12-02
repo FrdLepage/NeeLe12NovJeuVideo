@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BiomesEtatsManager : MonoBehaviour
 {
-
+    [SerializeField] public AudioClip collecterCristal;
     [SerializeField] public Material matParticules;
     private BiomesEtatsBase etatActuel;
     public BiomesEtatActivable activable = new BiomesEtatActivable();

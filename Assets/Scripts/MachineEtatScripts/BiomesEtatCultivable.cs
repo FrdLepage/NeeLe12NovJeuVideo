@@ -1,9 +1,9 @@
 using UnityEngine;
 
+
 public class BiomesEtatCultivable : BiomesEtatsBase
 {
-  
-  
+
   
   public override void InitEtat(BiomesEtatsManager biome)
   {
@@ -21,6 +21,7 @@ public class BiomesEtatCultivable : BiomesEtatsBase
     //   biome.biomeItem.GetComponent<Transform>().localScale = new Vector3(0f,0f,0f);
     // }
       if(biome.biomeItem != null && (biome.biomeItem.tag == "ItemCollect" ) ) {
+        SoundManager.instance.JouerSon(biome.collecterCristal);
         biome.point.GetComponent<SystemeDePoint>().currentPoint++;
         biome.point.GetComponent<SystemeDePoint>().SetPoint();
         GameObject.Destroy(biome.biomeItem);
