@@ -179,7 +179,7 @@ public class Generateur : MonoBehaviour
 
         
        
-        //inserer la ligne pour aller a la scene de fin(reussi)
+        SceneManager.LoadScene("Gagne");
         yield return null;
 
 

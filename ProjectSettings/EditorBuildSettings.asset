@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ile.unity
     guid: 7d4bae38d71b23c4185a59944c6b842a
+  - enabled: 1
+    path: Assets/Scenes/Gagne.unity
+    guid: a0e0eb63f47e9664ca943a13ac671406
+  - enabled: 1
+    path: Assets/Scenes/Perdu.unity
+    guid: 8b1e6fbfda8ecd4428de972c90cca8b5
   m_configObjects: {}

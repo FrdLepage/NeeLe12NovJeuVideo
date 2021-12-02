@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartSystem : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class HeartSystem : MonoBehaviour
     void Update() {
         if (dead==true){
             Debug.Log("Personnage mort");
+            SceneManager.LoadScene("Perdu");
+
         }
     }
 
