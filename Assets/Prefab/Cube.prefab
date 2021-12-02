@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6f60e8abb3bef43a28aef3ad3469cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collecterCristal: {fileID: 8300000, guid: 84dbcdf77491edb4fbedf71e05617ea2, type: 3}
+  collecterCristal: {fileID: 8300000, guid: 15f149417aab46e418f239b83a7ae047, type: 3}
   matParticules: {fileID: 2100000, guid: 1afa01a7785baff4b83cb5dc08d1aa91, type: 2}
 --- !u!65 &2370494643382026059
 BoxCollider:
