@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 210196203}
   - component: {fileID: 210196206}
   m_Layer: 5
-  m_Name: Jouer
+  m_Name: Rejouer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d86a5d9ca7e8d24fa8d32de2099aa8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a92f64b0c147904d95a9227461ddbd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 1707130566}
   - component: {fileID: 1707130569}
   m_Layer: 5
-  m_Name: Quitter
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcf922dfac953834f9c17ec0cc68942a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af3df1f3904b4604f83615ae7759297f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
