@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class frederic_MovePerso : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] private GameObject ChampDeForce;
 
     private float vitesseSaut;
+    public bool feeExiste =  false;
     private bool peutPerdrevie = true;
 
     [SerializeField] public GameObject fee;
@@ -126,12 +128,17 @@ public class frederic_MovePerso : MonoBehaviour
 
     
     private IEnumerator Fee (){
-        Instantiate(fee,transform.position, Quaternion.identity);
+        feeExiste = true;
+        GameObject uneFee = Instantiate(fee,transform.position, Quaternion.identity);
         SoundManager.instance.JouerSon(persoAttaque);
         yield return new WaitForSeconds(5f);
 
         peutAttaquer = true;
-        DestroyImmediate(fee, true);
+        yield return new WaitForSeconds(5f);
+        Destroy(uneFee);
+       
+        // DestroyImmediate(fee, true);
+        feeExiste = false;
         yield return null;
     }
 
@@ -140,10 +147,16 @@ public class frederic_MovePerso : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-         if(other.tag == "EnnemiRouge"){
+        Debug.Log(other.tag);
+         if(other.tag == "EnnemiRouge" ){
            StartCoroutine(PerdreVie());
             Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
  
+        }
+        else if(other.tag == "Lave")
+        {
+
+            SceneManager.LoadScene("Perdu");
         }
     }
 }
