@@ -297,8 +297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Utiliser les touches W,A,S,D pour vous d\xE9placez. \nAppuyer sur la barre
-    espace pour sauter et sur la touche E pour g\xE9n\xE9rer des f\xE9es"
+  m_Text: "D\xE9placements: W, A, S, D "
 --- !u!222 &192773670
 CanvasRenderer:
   m_ObjectHideFlags: 0
