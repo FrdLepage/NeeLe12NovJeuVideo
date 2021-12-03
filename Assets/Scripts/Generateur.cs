@@ -328,7 +328,7 @@ public class Generateur : MonoBehaviour
                 //trouver la position du cube
                 position = unCube.transform.position;
                 //spawn prefab at position
-                Instantiate(ennemi, position, Quaternion.identity);
+                // Instantiate(ennemi, position, Quaternion.identity);
                 }
 
 

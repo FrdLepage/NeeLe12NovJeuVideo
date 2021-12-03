@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ennemiMeurt: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
+  boule: {fileID: 0}
+  target: {fileID: 0}
   animator: {fileID: 0}
   rb: {fileID: 0}
 --- !u!1 &9192776969880513416

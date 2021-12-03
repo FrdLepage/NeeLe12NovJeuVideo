@@ -10,7 +10,7 @@ public class BiomesEtatActivable : BiomesEtatsBase
   
   public override void InitEtat(BiomesEtatsManager biome)
   {
-      Debug.Log("allo activable");
+      // Debug.Log("allo activable");
   }
   public override void UpdateEtat(BiomesEtatsManager biome)
   {
