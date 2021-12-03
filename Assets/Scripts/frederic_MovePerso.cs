@@ -129,6 +129,7 @@ public class frederic_MovePerso : MonoBehaviour
     
     private IEnumerator Fee (){
         feeExiste = true;
+        yield return new WaitForSeconds(1.18f);
         GameObject uneFee = Instantiate(fee,transform.position, Quaternion.identity);
         SoundManager.instance.JouerSon(persoAttaque);
         yield return new WaitForSeconds(5f);

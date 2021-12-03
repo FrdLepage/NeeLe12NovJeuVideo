@@ -297,7 +297,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "D\xE9placements: W, A, S, D "
+  m_Text: "D\xE9placements: W, A, S, D \nSAUTER: BARRE D'ESPACE\nG\xC9N\xC9RER F\xC9ES:
+    E"
 --- !u!222 &192773670
 CanvasRenderer:
   m_ObjectHideFlags: 0
