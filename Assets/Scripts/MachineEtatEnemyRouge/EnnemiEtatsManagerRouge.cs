@@ -8,6 +8,7 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
   
     private EnnemiEtatsBaseRouge etatActuel;
     private int nbVies =3;
+    public bool feeExisteBool {get;set;}
     [SerializeField] AudioClip ennemiMeurt;
     public EnnemiEtatReposRouge repos = new EnnemiEtatReposRouge();
     public EnnemiEtatPromenadeRouge promenade = new EnnemiEtatPromenadeRouge();

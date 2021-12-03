@@ -8,34 +8,27 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
   {
      ennemi.StartCoroutine(anime(ennemi));
      ennemi.animator.SetBool("isRunning", true);
+     Debug.Log(ennemi.cible.name);
   }
  
 
   private IEnumerator anime(EnnemiEtatsManagerRouge ennemi){
       ennemi.agent.speed = 13f;
-    
-      //trouve la cible et la met en destination de L'agent
-      if(Vector3.Distance(ennemi.transform.position, ennemi.cibleFee.transform.position)>30f) {
-        ennemi.agent.destination = ennemi.cibleFee.transform.position;
-      }else
-      {
-        ennemi.agent.destination = ennemi.cible.transform.position;  
+  Debug.Log(ennemi.cible.GetComponent<frederic_MovePerso>().feeExiste);
+
+      ennemi.agent.SetDestination(ennemi.cible.transform.position);
+      while(ennemi.agent.remainingDistance > 2f  || ennemi.agent.pathPending)
+    {
+      if(Vector3.Distance(ennemi.transform.position, ennemi.cibleFee.transform.position)>30f){
+      ennemi.agent.SetDestination(ennemi.cibleFee.transform.position);
+      yield return null;
       }
+      ennemi.agent.SetDestination(ennemi.cible.transform.position);
+        //met a jour toutes les 0.2 secondes
+        yield return new WaitForSeconds(0.5f);
+    }
+     
 
-    //path pending veut dire que ca a pas fini de calculer
-
-    //tant que l'agent est a plus de 2.5 unite de la cible
-    //ou bien que le path n'est pas encore calcule
-
-    // while(ennemi.agent.remainingDistance > 30f  || ennemi.agent.pathPending)
-    // {
-    //     //ajuste la destination sur la position de la cible
-    //     //(utile si la cible est en mouvement)
-    //     ennemi.agent.destination = ennemi.cible.transform.position;
-    //     //met a jour toutes les 0.2 secondes
-    //     yield return new WaitForSeconds(0.2f);
-        
-    // }
     ennemi.animator.SetBool("isAttacking", true);
     yield return new WaitForSeconds(3f);
     ennemi.animator.SetBool("isAttacking", false);
