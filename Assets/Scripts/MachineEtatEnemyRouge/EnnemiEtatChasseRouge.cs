@@ -8,6 +8,7 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
   {
      ennemi.StartCoroutine(anime(ennemi));
      ennemi.animator.SetBool("isRunning", true);
+     Debug.Log(ennemi.cible.name);
   }
  
 
@@ -15,14 +16,17 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
       ennemi.agent.speed = 13f;
   Debug.Log(ennemi.cible.GetComponent<frederic_MovePerso>().feeExiste);
 
-      if(ennemi.cible.GetComponent<frederic_MovePerso>().feeExiste){
-         ennemi.agent.destination = ennemi.cibleFee.transform.position;
+      ennemi.agent.SetDestination(ennemi.cible.transform.position);
+      while(ennemi.agent.remainingDistance > 2f  || ennemi.agent.pathPending)
+    {
+      if(Vector3.Distance(ennemi.transform.position, ennemi.cibleFee.transform.position)>30f){
+      ennemi.agent.SetDestination(ennemi.cibleFee.transform.position);
+      yield return null;
       }
-      else{
-      ennemi.agent.destination = ennemi.cible.transform.position;  
-
-      }
-
+      ennemi.agent.SetDestination(ennemi.cible.transform.position);
+        //met a jour toutes les 0.2 secondes
+        yield return new WaitForSeconds(0.5f);
+    }
      
 
       //trouve la cible et la met en destination de L'agent
@@ -49,6 +53,9 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
     //     yield return new WaitForSeconds(0.2f);
         
     // }
+
+
+
     ennemi.animator.SetBool("isAttacking", true);
     yield return new WaitForSeconds(3f);
     ennemi.animator.SetBool("isAttacking", false);
