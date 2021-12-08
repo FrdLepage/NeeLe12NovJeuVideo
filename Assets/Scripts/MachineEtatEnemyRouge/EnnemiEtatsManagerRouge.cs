@@ -49,6 +49,8 @@ public class EnnemiEtatsManagerRouge : MonoBehaviour
             Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
  
         }
+        
+        etatActuel.TriggerEnterEtat(this,other);
     }
 
     public void ChangerEtat(EnnemiEtatsBaseRouge etat)

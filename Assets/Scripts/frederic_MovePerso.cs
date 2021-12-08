@@ -131,6 +131,7 @@ public class frederic_MovePerso : MonoBehaviour
         feeExiste = true;
         yield return new WaitForSeconds(1.18f);
         GameObject uneFee = Instantiate(fee,transform.position, Quaternion.identity);
+        // unAgent.GetComponent<EnnemiEtatsManagerRouge>().cibleFee = perso.GetComponent<frederic_MovePerso>().fee;
         SoundManager.instance.JouerSon(persoAttaque);
         var particules = Resources.Load("magic_circle") as GameObject;
         GameObject system = Instantiate(particules, transform.position, Quaternion.identity);

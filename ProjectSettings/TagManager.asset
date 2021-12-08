@@ -12,6 +12,7 @@ TagManager:
   - Cube
   - ItemCollect
   - EnnemiRouge
+  - Fee
   layers:
   - Default
   - TransparentFX

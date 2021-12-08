@@ -21,5 +21,9 @@ public class EnnemiEtatReposRouge : EnnemiEtatsBaseRouge
 
     ennemi.ChangerEtat(ennemi.chasse);
   }
-  
+  public override void TriggerEnterEtat(EnnemiEtatsManagerRouge ennemi, Collider other)
+    {
+        
+    }
+
 }
