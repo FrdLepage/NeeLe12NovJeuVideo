@@ -23,6 +23,7 @@ public class frederic_MovePerso : MonoBehaviour
 
     [SerializeField] public GameObject fee;
     private AudioSource _audio;
+    private GameObject attaque;
     private Vector3 directionsMouvement= Vector3.zero;
     private bool peutAttaquer = true;
     Animator animator;
@@ -154,15 +155,51 @@ public class frederic_MovePerso : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.tag);
-         if(other.tag == "EnnemiRouge" ){
+         if(other.tag == "EnnemiRouge" && peutPerdrevie == true){
            StartCoroutine(PerdreVie());
             Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
  
         }
+        if(other.tag == "Potion"){
+            Debug.Log("contact avec potion");
+            Destroy(other.gameObject);
+            StartCoroutine(Sphere());
+        }
+
+        
         else if(other.tag == "Lave")
         {
 
             SceneManager.LoadScene("Perdu");
         }
+    }
+
+
+    private IEnumerator Sphere (){
+        peutPerdrevie = false;
+        attaque = Resources.Load("protect") as GameObject;
+        GameObject Sphere = Instantiate(attaque,transform.position, Quaternion.identity);
+        Sphere.GetComponent<Transform>().localScale = new Vector3(0,0,0);
+        Sphere.GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y+2.2f, transform.position.z);
+        Sphere.GetComponent<Transform>().parent = transform;
+        
+      
+        float scale = 0;
+
+        while(scale <= 50){
+            scale+=Time.deltaTime+10;
+          
+            // attaque.GetComponent<Transform>().localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(20,20,20), scale);
+            Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
+           
+            
+            yield return null;
+        }
+        yield return new WaitForSeconds(90f);
+        Destroy(Sphere);
+        peutPerdrevie = true;
+
+        
+        yield return null;
     }
 }

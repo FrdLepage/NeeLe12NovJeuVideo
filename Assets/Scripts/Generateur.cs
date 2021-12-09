@@ -269,6 +269,7 @@ public class Generateur : MonoBehaviour
         //tirage de 1/20
         int tirage = 1;
         int tirageRouge = 1;
+        int tiragePotion = 1;
      
         for (int z = 0; z < prof; z++)
         {
@@ -319,7 +320,7 @@ public class Generateur : MonoBehaviour
                 tirage++;
         
                 tirageRouge++;
-
+                tiragePotion++;
                 if(tirage == 3000){
 
                 GameObject ennemi = ((GameObject)Resources.Load("ennemis/ennemi"));
@@ -329,6 +330,12 @@ public class Generateur : MonoBehaviour
                 position = unCube.transform.position;
                 //spawn prefab at position
                 // Instantiate(ennemi, position, Quaternion.identity);
+                }
+                if(tiragePotion == 5000){
+                    GameObject potion = ((GameObject)Resources.Load("potion"));
+                    position = unCube.transform.position;
+                    Instantiate(potion, new Vector3(position.x,position.y+2,position.z), Quaternion.identity);
+                    tiragePotion = 0;
                 }
 
 
