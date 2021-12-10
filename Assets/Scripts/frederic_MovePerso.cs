@@ -9,6 +9,7 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] AudioClip persoMarche;
     [SerializeField] AudioClip persoSaut;
     [SerializeField] AudioClip persoAtteri;
+    [SerializeField] AudioClip persoBulle;
     [SerializeField] private float vitesseMouvement=20.0f;
     [SerializeField] private float vitesseRotation=20.0f;
     [SerializeField] private float impulsionSaut=20.0f;
@@ -186,20 +187,22 @@ public class frederic_MovePerso : MonoBehaviour
       
         float scale = 0;
 
-        while(scale <= 50){
-            scale+=Time.deltaTime+10;
+        while(scale <= 40){
+            scale+=Time.deltaTime+5;
           
             // attaque.GetComponent<Transform>().localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(20,20,20), scale);
-            Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
-           
-            
+            Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale); 
             yield return null;
         }
-        yield return new WaitForSeconds(90f);
+        SoundManager.instance.JouerSon(persoBulle);
+        yield return new WaitForSeconds(10f);
+        while(scale >= 40){
+            scale -=Time.deltaTime+10;
+            Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
+            yield return null;
+        }
         Destroy(Sphere);
         peutPerdrevie = true;
-
-        
         yield return null;
     }
 }

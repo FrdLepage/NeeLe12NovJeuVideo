@@ -37,8 +37,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - IntensiteOmbrage: 0.5
-    - PuissanceFresnel: 5
+    - IntensiteOmbrage: 5
+    - PuissanceFresnel: 2
     - VitesseTexture: 0
     m_Colors:
     - _Emission: {r: 4.179118, g: 0.15289457, b: 9.734288, a: 0}

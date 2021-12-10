@@ -76,7 +76,7 @@ public class EnnemiTourelle : MonoBehaviour
         // boule.transform.rotation = Quaternion.identity;
         
         //*******************************************************
-        ThrowBallAtTargetLocation(target.position, 50f);
+        ThrowBallAtTargetLocation(target.position, 20f);
 
 
         // yield return new WaitForSeconds(1f);

@@ -7,7 +7,7 @@ public class BiomesEtatCultivable : BiomesEtatsBase
   
   public override void InitEtat(BiomesEtatsManager biome)
   {
-      Debug.Log("allo cultivable");
+      // Debug.Log("allo cultivable");
     
   }
   public override void UpdateEtat(BiomesEtatsManager biome)

@@ -9,6 +9,7 @@ public class BiomesEtatsManager : MonoBehaviour
     private BiomesEtatsBase etatActuel;
     public BiomesEtatActivable activable = new BiomesEtatActivable();
     public BiomesEtatCultivable cultivable = new BiomesEtatCultivable();
+    public BiomesEtatFeu feu = new BiomesEtatFeu();
     
     public GameObject point{ get; set;}
 
@@ -43,31 +44,33 @@ public class BiomesEtatsManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
            if(other.tag == "Boule"){
+               ChangerEtat(feu);
             
-               StartCoroutine(Boule());
+            //    StartCoroutine(Boule());
              
         }
+
         
         etatActuel.TriggerEnterEtat(this,other);
     }
 
    
-    private IEnumerator Boule(){
-        // var p = gameObject.AddComponent<ParticleSystem>();
-        var particules = Resources.Load("particules") as GameObject;
-        Instantiate(particules, transform.position, Quaternion.identity);
+    // private IEnumerator Boule(){
+    //     // var p = gameObject.AddComponent<ParticleSystem>();
+    //     var particules = Resources.Load("particules") as GameObject;
+    //     Instantiate(particules, transform.position, Quaternion.identity);
 
-        // GetComponent<Renderer>().material = Resources.Load("materiaux/main_cristal") as Material;
+    //     // GetComponent<Renderer>().material = Resources.Load("materiaux/main_cristal") as Material;
 
-        // yield return new WaitForSeconds(10f);
+    //     // yield return new WaitForSeconds(10f);
 
-        // ParticleSystem ps = GetComponent<ParticleSystem>();
-        // ps.Clear();
-        // var em = ps.emission;
-        // em.enabled = false;
+    //     // ParticleSystem ps = GetComponent<ParticleSystem>();
+    //     // ps.Clear();
+    //     // var em = ps.emission;
+    //     // em.enabled = false;
 
-        yield return null;
-    }
+    //     yield return null;
+    // }
 
 
 }

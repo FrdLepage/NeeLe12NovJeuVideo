@@ -72,7 +72,10 @@ public class BiomesEtatActivable : BiomesEtatsBase
       rotationT+=Time.deltaTime;
 
       // ParticleSystem ps = biome.AddComponent<ParticleSystem>();
-      var p = biome.gameObject.AddComponent<ParticleSystem>();
+      if(!biome.gameObject.GetComponent<ParticleSystem>()){
+        var p = biome.gameObject.AddComponent<ParticleSystem>();
+
+      }
    
       // var Main = p.main;
       // Main.loop=false;

@@ -3140,6 +3140,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: cb370edc71f957b48901758d16468b4a, type: 3}
     - target: {fileID: 2201359545335330064, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
+      propertyPath: persoBulle
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d456bd5a28de2e43ac31a864caac364, type: 3}
+    - target: {fileID: 2201359545335330064, guid: 89b212d9027f8cf4eadab44a59c0897f, type: 3}
       propertyPath: persoDegat
       value: 
       objectReference: {fileID: 8300000, guid: 7108c54e37bd5144489934aac5091573, type: 3}
