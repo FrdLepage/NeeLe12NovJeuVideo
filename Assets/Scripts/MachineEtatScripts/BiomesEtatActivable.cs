@@ -12,16 +12,23 @@ public class BiomesEtatActivable : BiomesEtatsBase
   {
       // Debug.Log("allo activable");
   }
-  public override void UpdateEtat(BiomesEtatsManager biome)
-  {
+  // public override void UpdateEtat(BiomesEtatsManager biome)
+  // {
  
 
-  }
+  // }
   public override void TriggerEnterEtat(BiomesEtatsManager biome, Collider other)
   {
     if(other.tag == "Player"){
       biome.StartCoroutine(bob(biome));
     }
+
+    //Quand le boule de feu entre en collision avec un biome
+           if(other.tag == "Boule"){
+               //changement d'état vers etat feu
+               biome.ChangerEtat(biome.feu);            
+        }
+
 
   }
 
