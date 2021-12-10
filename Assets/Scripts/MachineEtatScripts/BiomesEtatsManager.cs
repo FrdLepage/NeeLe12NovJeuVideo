@@ -20,8 +20,8 @@ public class BiomesEtatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        point.GetComponent<SystemeDePoint>().SetMaxPoint(200);
         ChangerEtat(activable);
+        point.GetComponent<SystemeDePoint>().SetMaxPoint(200);
     }
 
     public void ChangerEtat(BiomesEtatsBase etat)
@@ -32,45 +32,17 @@ public class BiomesEtatsManager : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
-    {
-        etatActuel.UpdateEtat(this);
-      
- 
-    
-    }
+    // void Update()
+    // {
+    //     etatActuel.UpdateEtat(this);
+    // }
   
     
     private void OnTriggerEnter(Collider other)
     {
-           if(other.tag == "Boule"){
-               ChangerEtat(feu);
-            
-            //    StartCoroutine(Boule());
-             
-        }
-
-        
+        Debug.Log(this);
+        Debug.Log(other);
         etatActuel.TriggerEnterEtat(this,other);
+
     }
-
-   
-    // private IEnumerator Boule(){
-    //     // var p = gameObject.AddComponent<ParticleSystem>();
-    //     var particules = Resources.Load("particules") as GameObject;
-    //     Instantiate(particules, transform.position, Quaternion.identity);
-
-    //     // GetComponent<Renderer>().material = Resources.Load("materiaux/main_cristal") as Material;
-
-    //     // yield return new WaitForSeconds(10f);
-
-    //     // ParticleSystem ps = GetComponent<ParticleSystem>();
-    //     // ps.Clear();
-    //     // var em = ps.emission;
-    //     // em.enabled = false;
-
-    //     yield return null;
-    // }
-
-
 }

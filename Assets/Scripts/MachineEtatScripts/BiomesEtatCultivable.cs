@@ -10,10 +10,10 @@ public class BiomesEtatCultivable : BiomesEtatsBase
       // Debug.Log("allo cultivable");
     
   }
-  public override void UpdateEtat(BiomesEtatsManager biome)
-  {
+  // public override void UpdateEtat(BiomesEtatsManager biome)
+  // {
     
-  }
+  // }
   public override void TriggerEnterEtat(BiomesEtatsManager biome, Collider other)
   {
     // Debug.Log(biome.biomeItem.name);
@@ -26,6 +26,12 @@ public class BiomesEtatCultivable : BiomesEtatsBase
         biome.point.GetComponent<SystemeDePoint>().SetPoint();
         GameObject.Destroy(biome.biomeItem);
       }
+
+      //Quand le boule de feu entre en collision avec un biome
+           if(other.tag == "Boule"){
+               //changement d'état vers etat feu
+               biome.ChangerEtat(biome.feu);            
+        }
 
 
    

@@ -23,6 +23,7 @@ public class Generateur : MonoBehaviour
     private List<List<GameObject>> items = new List<List<GameObject>>();
 
     public Renderer textureRenderer;
+    public GameObject PlaneDeLave;
    
     public Slider sliderTemps;
     public int currentTime;
@@ -31,7 +32,6 @@ public class Generateur : MonoBehaviour
     public GameObject point;
     private Object mats; 
     private GameObject its; 
-    private float _timer=600.0f;//Pour savoir le temps du timer au départ
     public int coefAltitude = 10;
     // public Color[] biomesCouleurs;
 
@@ -45,6 +45,7 @@ public class Generateur : MonoBehaviour
         textureRenderer.GetComponent<Renderer>().material = lave;
         currentTime=500;
         sliderTemps.maxValue = currentTime;
+        Invoke("MettreCollider", 2f);
         
     }
 
@@ -174,7 +175,7 @@ public class Generateur : MonoBehaviour
         Debug.Log("eau");
         SoundManager.instance.JouerSon(fin);
         textureRenderer.GetComponent<Renderer>().material = eau;
-         Rend = this.GetComponentsInChildren<Renderer>();
+        Rend = this.GetComponentsInChildren<Renderer>();
         foreach (Renderer rend in Rend) rend.material = matFin;
         yield return new WaitForSeconds(3f);
 
@@ -193,6 +194,11 @@ public class Generateur : MonoBehaviour
         float[,] ile = GenererTerrain(profondeurIle, largeurIle, attenuateur, map);
         DessinerMap(ile);
         GenererIle(ile);
+        
+    }
+
+    private void MettreCollider(){
+        PlaneDeLave.GetComponent<BoxCollider>().enabled = true;
 
     }
 
@@ -343,7 +349,7 @@ public class Generateur : MonoBehaviour
 
                 if(tirageRouge == 4200){
 
-                GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+1, unCube.transform.position.z), Quaternion.identity);
+                GameObject unAgent = Instantiate((GameObject)Resources.Load("ennemis/goblin_rouge"), new Vector3(unCube.transform.position.x, unCube.transform.position.y+3, unCube.transform.position.z), Quaternion.identity);
                 unAgent.GetComponent<EnnemiEtatsManagerRouge>().cible = perso;
             
                 // unAgent.GetComponent<EnnemiEtatsManagerRouge>().cibleFee = perso.GetComponent<frederic_MovePerso>().fee;
@@ -365,6 +371,7 @@ public class Generateur : MonoBehaviour
                 }
             }
         }
+        
         }
     
 

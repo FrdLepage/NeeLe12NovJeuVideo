@@ -25,7 +25,7 @@ public class EnnemiEtatPromenadeRouge : EnnemiEtatsBaseRouge
     //tant que l'agent est a plus de 2.5 unite de la cible
     //ou bien que le path n'est pas encore calcule
 
-    while(ennemi.agent.remainingDistance > 2.5f  || ennemi.agent.pathPending)
+    while(ennemi.agent.remainingDistance < 2.5f  || ennemi.agent.pathPending)
     {
     ennemi.agent.SetDestination(ennemi.origine.position);
         //met a jour toutes les 0.2 secondes
