@@ -23,6 +23,7 @@ public class Generateur : MonoBehaviour
     private List<List<GameObject>> items = new List<List<GameObject>>();
 
     public Renderer textureRenderer;
+    public GameObject PlaneDeLave;
    
     public Slider sliderTemps;
     public int currentTime;
@@ -192,7 +193,7 @@ public class Generateur : MonoBehaviour
         float[,] ile = GenererTerrain(profondeurIle, largeurIle, attenuateur, map);
         DessinerMap(ile);
         GenererIle(ile);
-
+        PlaneDeLave.GetComponent<BoxCollider>().enabled = true;
     }
 
     float Sigmoid(float value){
@@ -364,6 +365,7 @@ public class Generateur : MonoBehaviour
                 }
             }
         }
+        
         }
     
 
