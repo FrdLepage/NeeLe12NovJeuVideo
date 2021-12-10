@@ -131,14 +131,26 @@ public class frederic_MovePerso : MonoBehaviour
     
     private IEnumerator Fee (){
         feeExiste = true;
-        yield return new WaitForSeconds(1.18f);
-        GameObject uneFee = Instantiate(fee,transform.position, Quaternion.identity);
+        vitesseMouvement=0f;
         // unAgent.GetComponent<EnnemiEtatsManagerRouge>().cibleFee = perso.GetComponent<frederic_MovePerso>().fee;
-        SoundManager.instance.JouerSon(persoAttaque);
+        yield return new WaitForSeconds(1f);
+
         var particules = Resources.Load("magic_circle") as GameObject;
         GameObject system = Instantiate(particules, transform.position, Quaternion.identity);
-        // var particules = Resources.Load("splash") as GameObject;
-        // GameObject system = Instantiate(particules, transform.position, Quaternion.identity);
+        system.transform.Rotate(-90,0,0);
+
+        var particules2 = Resources.Load("splash") as GameObject;
+        GameObject system2 = Instantiate(particules2, transform.position, Quaternion.identity);
+        system2.transform.Rotate(-90,0,0);
+        
+
+        yield return new WaitForSeconds(.5f);
+        SoundManager.instance.JouerSon(persoAttaque);
+
+        yield return new WaitForSeconds(1f);
+        vitesseMouvement=20f;
+        GameObject uneFee = Instantiate(fee,new Vector3(transform.position.x,transform.position.y+2,transform.position.z), Quaternion.identity);
+
         yield return new WaitForSeconds(5f);
 
         peutAttaquer = true;
