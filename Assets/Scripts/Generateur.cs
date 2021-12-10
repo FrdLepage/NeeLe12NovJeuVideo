@@ -45,6 +45,7 @@ public class Generateur : MonoBehaviour
         textureRenderer.GetComponent<Renderer>().material = lave;
         currentTime=500;
         sliderTemps.maxValue = currentTime;
+        Invoke("MettreCollider", 2f);
         
     }
 
@@ -193,7 +194,12 @@ public class Generateur : MonoBehaviour
         float[,] ile = GenererTerrain(profondeurIle, largeurIle, attenuateur, map);
         DessinerMap(ile);
         GenererIle(ile);
+        
+    }
+
+    private void MettreCollider(){
         PlaneDeLave.GetComponent<BoxCollider>().enabled = true;
+
     }
 
     float Sigmoid(float value){
