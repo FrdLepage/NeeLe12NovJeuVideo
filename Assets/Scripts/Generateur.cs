@@ -161,7 +161,7 @@ public class Generateur : MonoBehaviour
 
     void Update()
     {
-        if(point.GetComponent<SystemeDePoint>().slider.value == 50){
+        if(point.GetComponent<SystemeDePoint>().slider.value == 200){
             StartCoroutine(RetourIle());
         }
         

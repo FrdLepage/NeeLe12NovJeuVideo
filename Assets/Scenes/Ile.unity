@@ -800,7 +800,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 200
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -1795,7 +1795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352563975}
   - component: {fileID: 1352563974}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: skybox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1815,8 +1815,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _color: {r: 1, g: 1, b: 1, a: 0}
-  _speedRotation: 2
-  _speedExposure: 0.01
+  _cristalValue: {fileID: 566043706}
+  _speedRotation: 1.5
 --- !u!4 &1352563975
 Transform:
   m_ObjectHideFlags: 0
