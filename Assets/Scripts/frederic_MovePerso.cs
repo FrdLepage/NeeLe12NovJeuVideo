@@ -144,10 +144,10 @@ public class frederic_MovePerso : MonoBehaviour
         system2.transform.Rotate(-90,0,0);
         
 
-        yield return new WaitForSeconds(.5f);
+        // yield return new WaitForSeconds(2f);
         SoundManager.instance.JouerSon(persoAttaque);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.1f);
         vitesseMouvement=20f;
         GameObject uneFee = Instantiate(fee,new Vector3(transform.position.x,transform.position.y+2,transform.position.z), Quaternion.identity);
 
