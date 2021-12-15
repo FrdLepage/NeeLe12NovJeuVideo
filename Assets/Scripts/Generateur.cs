@@ -168,24 +168,22 @@ public class Generateur : MonoBehaviour
         
     }
     
-
+    /// <summary>
+    /// Permet de la transformation de l'île a la fin d'une partie réussie
+    /// change le plane de lave en eau et change le materiel des biomes
+    /// </summary>
     private IEnumerator RetourIle(){
-        // textureRenderer.sharedMaterial.GetTexture
-        //Material eau = Resources.Load("eau");
-        Debug.Log("eau");
-        SoundManager.instance.JouerSon(fin);
-        textureRenderer.GetComponent<Renderer>().material = eau;
+        SoundManager.instance.JouerSon(fin); //pour jouer le son
+        textureRenderer.GetComponent<Renderer>().material = eau; //pour appliquer le materiel de l'eau sur le plane
+        //pour mettre tous les composants render de tous les cubes dans le tableau Rend
         Rend = this.GetComponentsInChildren<Renderer>();
+        //pour chaque element du tableau, on associe le materiel de la fin
         foreach (Renderer rend in Rend) rend.material = matFin;
+        //delai de 3 secondes
         yield return new WaitForSeconds(3f);
-
-        
-       
+        //pour charger la scene de fin
         SceneManager.LoadScene("Gagne");
         yield return null;
-
-
-     
     }
 
     void CreerMap(){
@@ -337,7 +335,7 @@ public class Generateur : MonoBehaviour
                 //spawn prefab at position
                 // Instantiate(ennemi, position, Quaternion.identity);
                 }
-                if(tiragePotion == 5000){
+                if(tiragePotion == 10000){
                     GameObject potion = ((GameObject)Resources.Load("potion"));
                     position = unCube.transform.position;
                     Instantiate(potion, new Vector3(position.x,position.y+2,position.z), Quaternion.identity);

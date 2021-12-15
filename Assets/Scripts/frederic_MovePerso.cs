@@ -188,33 +188,37 @@ public class frederic_MovePerso : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Permet de generer la bulle de protection autour du personnage
+    /// </summary>
     private IEnumerator Sphere (){
-        peutPerdrevie = false;
-        attaque = Resources.Load("protect") as GameObject;
-        GameObject Sphere = Instantiate(attaque,transform.position, Quaternion.identity);
-        Sphere.GetComponent<Transform>().localScale = new Vector3(0,0,0);
+        peutPerdrevie = false; //enleve la possibilite de perdre des vies
+        attaque = Resources.Load("protect") as GameObject; //pour aller chercher la bulle dans le dossier ressource
+        GameObject Sphere = Instantiate(attaque,transform.position, Quaternion.identity); // la sphere est instanciee
+        Sphere.GetComponent<Transform>().localScale = new Vector3(0,0,0); //la taille de la sphere est de 0
+        //la sphere est generee a la position du personnage
         Sphere.GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y+2.2f, transform.position.z);
-        Sphere.GetComponent<Transform>().parent = transform;
-        
-      
-        float scale = 0;
-
+        Sphere.GetComponent<Transform>().parent = transform; //la sphere est associee comme enfant du personnage
+        float scale = 0; // variable de la taille de la bulle
+        //tant que la taille est plus petite ou egale a 40
         while(scale <= 40){
+            //la taille  augmente selon le temps
             scale+=Time.deltaTime+5;
-          
-            // attaque.GetComponent<Transform>().localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(20,20,20), scale);
+            //la taille de la bulle est ajustee selon la variable scale
             Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale); 
             yield return null;
         }
-        SoundManager.instance.JouerSon(persoBulle);
-        yield return new WaitForSeconds(10f);
+        SoundManager.instance.JouerSon(persoBulle);//un son est joue
+        yield return new WaitForSeconds(10f); //la bulle reste 10 secondes
+        //tant que la taille est pus grande ou egale a 40
         while(scale >= 40){
-            scale -=Time.deltaTime+10;
+            scale -=Time.deltaTime+5; //la taille de la variable scale diminue selon le temps
+            //la taille de la bulle est ajustee selon la variable scale
             Sphere.GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
             yield return null;
         }
-        Destroy(Sphere);
-        peutPerdrevie = true;
+        Destroy(Sphere); //la sphere est detruite
+        peutPerdrevie = true; //la possibilite de perdre des vies redevient vraie
         yield return null;
     }
 }
