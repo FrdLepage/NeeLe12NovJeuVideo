@@ -88,11 +88,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-<<<<<<< Updated upstream
-    - _Exposure: 0.20262748
-=======
-    - _Exposure: 0.2
->>>>>>> Stashed changes
+    - _Exposure: 0.20336494
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -105,11 +101,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-<<<<<<< Updated upstream
-    - _Rotation: 24.632624
-=======
-    - _Rotation: 224.08646
->>>>>>> Stashed changes
+    - _Rotation: 31.546215
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
