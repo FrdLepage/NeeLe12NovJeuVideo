@@ -129,7 +129,7 @@ public class frederic_MovePerso : MonoBehaviour
         system.transform.Rotate(-90,0,0);//rotate le system de particule de 90 degré
 
         var particules2 = Resources.Load("splash") as GameObject;//load les particule du jeu
-        GameObject system2 = Instantiate(particules2, transform.position, Quaternion.identity);////instacie les particule a l'endroit
+        GameObject system2 = Instantiate(particules2, transform.position, Quaternion.identity);//instancie les particule a l'endroit
         system2.transform.Rotate(-90,0,0);//rotate le system de particule de 90 degré
         
 
