@@ -19,7 +19,7 @@ public class frederic_MovePerso : MonoBehaviour
     [SerializeField] private GameObject ChampDeForce;
 
     private float vitesseSaut;
-    public bool feeExiste =  false;
+
     private bool peutPerdrevie = true;
 
     [SerializeField] public GameObject fee;
@@ -123,35 +123,33 @@ public class frederic_MovePerso : MonoBehaviour
 
     
     private IEnumerator Fee (){
-        feeExiste = true;
-        vitesseMouvement=0f;
+  
+        vitesseMouvement=0f;//rendre le personnage immobile
         // unAgent.GetComponent<EnnemiEtatsManagerRouge>().cibleFee = perso.GetComponent<frederic_MovePerso>().fee;
         yield return new WaitForSeconds(1f);
 
-        var particules = Resources.Load("magic_circle") as GameObject;
-        GameObject system = Instantiate(particules, transform.position, Quaternion.identity);
-        system.transform.Rotate(-90,0,0);
+        var particules = Resources.Load("magic_circle") as GameObject;//load les particule du jeu
+        GameObject system = Instantiate(particules, transform.position, Quaternion.identity);//instacie les particule a l'endroit
+        system.transform.Rotate(-90,0,0);//rotate le system de particule de 90 degré
 
-        var particules2 = Resources.Load("splash") as GameObject;
-        GameObject system2 = Instantiate(particules2, transform.position, Quaternion.identity);
-        system2.transform.Rotate(-90,0,0);
+        var particules2 = Resources.Load("splash") as GameObject;//load les particule du jeu
+        GameObject system2 = Instantiate(particules2, transform.position, Quaternion.identity);////instacie les particule a l'endroit
+        system2.transform.Rotate(-90,0,0);//rotate le system de particule de 90 degré
         
 
         // yield return new WaitForSeconds(2f);
-        SoundManager.instance.JouerSon(persoAttaque);
+        SoundManager.instance.JouerSon(persoAttaque);//jouer le son d'attaquer
 
         yield return new WaitForSeconds(1.1f);
-        vitesseMouvement=20f;
-        GameObject uneFee = Instantiate(fee,new Vector3(transform.position.x,transform.position.y+2,transform.position.z), Quaternion.identity);
+        vitesseMouvement=20f;//reprendre les mouvement du personnage
+        GameObject uneFee = Instantiate(fee,new Vector3(transform.position.x,transform.position.y+2,transform.position.z), Quaternion.identity);//instancie la fee
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);//Maintenir la fee vivant pendant 10 seconde
 
-        peutAttaquer = true;
-        yield return new WaitForSeconds(5f);
-        Destroy(uneFee);
+        Destroy(uneFee);//Detruire la fee
+        peutAttaquer = true;//peut réattaquer
        
         // DestroyImmediate(fee, true);
-        feeExiste = false;
         yield return null;
     }
 

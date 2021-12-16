@@ -15,7 +15,6 @@ public class EnnemiEtatChasseRouge : EnnemiEtatsBaseRouge
     private IEnumerator anime(EnnemiEtatsManagerRouge ennemi)
     {
         ennemi.agent.speed = 13f;// le speed de l'ennemis
-        Debug.Log(ennemi.cible.GetComponent<frederic_MovePerso>().feeExiste);
 
         ennemi.agent.SetDestination(ennemi.cible.transform.position);//l'ennemi se dirige vers le personnage
         while (ennemi.agent.remainingDistance > 2f || ennemi.agent.pathPending)//l'ennemi continu de se diriger a moins qui soit a coter du personnage
