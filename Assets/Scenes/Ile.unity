@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 0}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 05c3965300627f34aa8526674e880c15, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: abbce3ee677740042ab48d1f8a883789, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -445,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451336557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 154, y: 0, z: 169}
+  m_LocalPosition: {x: 154, y: -0.119, z: 169}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -462,7 +462,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.9, z: 10}
+  m_Size: {x: 10, y: 2, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &461304981
 GameObject:
@@ -906,6 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623647870}
   - component: {fileID: 623647869}
+  - component: {fileID: 623647871}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -924,7 +925,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.85882354, b: 0.76862746, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -989,6 +990,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &623647871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623647868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe0dc786b40df84d87ef4ae37cc0e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cristalValue: {fileID: 566043706}
+  _myLight: {fileID: 623647869}
+  _startColor: {r: 0.76862746, g: 0.8784291, b: 1, a: 1}
+  _endColor: {r: 1, g: 0.76792455, b: 0.80784315, a: 1}
+  _changeColor: 1
+  _repeatColor: 0
 --- !u!1 &863029500
 GameObject:
   m_ObjectHideFlags: 0
