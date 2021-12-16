@@ -29,29 +29,22 @@ public class frederic_MovePerso : MonoBehaviour
     private bool peutAttaquer = true;
     Animator animator;
     CharacterController controller;
-    // Start is called before the first frame update
+
     void Awake()
     {
-        animator=GetComponent<Animator>();
-        controller=GetComponent<CharacterController>();
-        _audio = GetComponent<AudioSource>();
-        
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Perd une vie");
-       if (other.gameObject.tag=="Lave")
-       {
-           Debug.Log("Perd une vie sur la lave");
-       }
+        animator=GetComponent<Animator>(); //association du composant Animator
+        controller=GetComponent<CharacterController>(); //association du composant CharacterController
+        _audio = GetComponent<AudioSource>(); //association du composant AudioSource
     }
 
     private void OnParticleCollision(){
-        //******mettre ligne pour perdre la vie
         StartCoroutine(PerdreVie());
-        Debug.Log("collision perso et particules");
     }
 
+    /// <summary>
+    /// Coroutine
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PerdreVie(){
         if(peutPerdrevie == true){
             this.GetComponent<HeartSystem>().TakeDamage(1);
