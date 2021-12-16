@@ -12,7 +12,7 @@ public class EnnemiEtatReposRouge : EnnemiEtatsBaseRouge
   
 
   private IEnumerator anime(EnnemiEtatsManagerRouge ennemi){
-    while (Vector3.Distance(ennemi.transform.position, ennemi.cible.transform.position)>30f){
+    while (Vector3.Distance(ennemi.transform.position, ennemi.cible.transform.position)>30f){//si l'ennemis se trouve a une distance de 30 unite de la cible se dirige vers le personnage
       
       float impatience = Random.Range(1f, 3f);
       yield return new WaitForSeconds(impatience);
