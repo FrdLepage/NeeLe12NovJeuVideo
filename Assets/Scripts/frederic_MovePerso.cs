@@ -42,47 +42,39 @@ public class frederic_MovePerso : MonoBehaviour
     }
 
     /// <summary>
-    /// Coroutine
+    /// Coroutine qui s'occupe de faire perdre de la vie au personnage
     /// </summary>
-    /// <returns></returns>
     private IEnumerator PerdreVie(){
+        //si perdre vie est vrai
         if(peutPerdrevie == true){
-            this.GetComponent<HeartSystem>().TakeDamage(1);
-            peutPerdrevie = false;
+            this.GetComponent<HeartSystem>().TakeDamage(1); //appel de la fonction TakeDamage pour retirer une vie
+            peutPerdrevie = false; //le perso ne peut plus perdre de vie pendant un certain moment
         }
-        yield return new WaitForSeconds(4f);
-        peutPerdrevie = true;
+        yield return new WaitForSeconds(4f); //delai de 4 secondes
+        peutPerdrevie = true; // le perso peut a nouveau perdre une vie
         yield return null;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //si le joueur appui sur la touche E et que peutAttaquer est vrai
         if(Input.GetKeyDown(KeyCode.E) && peutAttaquer == true){
-            peutAttaquer = false;
-            animator.SetTrigger("attaque");
-            StartCoroutine(Fee());
+            peutAttaquer = false; //peutAttaquer devient faux
+            animator.SetTrigger("attaque"); //l'animation de l'attaque est declenchee
+            StartCoroutine(Fee()); //debut de la coroutine pour generer la fee
         }
         //le joueur quand il clic sur les flèches à gauche ou à droite le joueur se tourne soit vers la gauche ou la droite
         transform.Rotate(0,vitesseRotation*Input.GetAxis("Horizontal"),0);
-
         //la vitesse s'active par la multiplation puisque Input.GetAxis("Vertical") est à 0 et quand le joueur clic sur les flèche du haut Input.GetAxis("Vertical") se dirige vers le 1
         float vitesse=vitesseMouvement*Input.GetAxis("Vertical"); 
 
-       
+       //pour declencher les bruits de pas
         if(!Input.GetButton("Vertical") || !_audio.isPlaying){
             _audio.Play();
         }
 
-        
-
-        //quand le joueur clic sur les flèches du haut l'animation course démarre
-        //animator.SetBool("enCourse",vitesse>0);
-
-        animator.SetFloat("vitesseX", vitesse);
-        
-        
-        animator.SetFloat("vitesseY", Input.GetAxis("Jump"));
+        animator.SetFloat("vitesseX", vitesse); // association de la valeur de vitesse au float vitesseX pour le blende tree
+        animator.SetFloat("vitesseY", Input.GetAxis("Jump")); // association de la valeur de l'input Jump au float vitesseY pour le blende tree
 
         //le personnage avance ou recule selon la vitesse du float à la ligne 31
         directionsMouvement=new Vector3(0,0,vitesse);
@@ -93,10 +85,8 @@ public class frederic_MovePerso : MonoBehaviour
         //si le joueur clic sur le bouton jump et il est au sol
         if ( Input.GetButton("Jump")&&controller.isGrounded) {
             vitesseSaut=impulsionSaut;
-            SoundManager.instance.JouerSon(persoSaut);
+            SoundManager.instance.JouerSon(persoSaut); //son pour le saut du perso
             }
-            //active l'animation du saut si le joueur n'est pas par terre et si la vitesse du saut est plus grande
-            // animator.SetBool("enSaut",!controller.isGrounded&&vitesseSaut>-impulsionSaut);
 
             //fait en sorte que le personnage saute dans les airs avec la variable impulsionSaut
             directionsMouvement.y +=vitesseSaut;
@@ -109,12 +99,17 @@ public class frederic_MovePerso : MonoBehaviour
         //si le joueur se promène augmente de scale de la sphère
         ChampDeForce.transform.localScale=Vector3.one*vitesse*2;
 
-
+       //ajustement du field of view pour eviter que les arbres cache la camera
         cameraDuJoueur.GetComponent<Camera>().fieldOfView = vitesse+60;
 
     }
 
+    /// <summary>
+    /// Coroutine responsable de jouer le son marche
+    /// </summary>
+    /// <param name="vitesse"></param>
     private IEnumerator SonMarche(float vitesse){
+        //tant que la vitesse est plus grande que 0
         while(vitesse > 0 ){
         SoundManager.instance.JouerSon(persoMarche);
         }
@@ -122,6 +117,7 @@ public class frederic_MovePerso : MonoBehaviour
     }
 
     
+   
     private IEnumerator Fee (){
   
         vitesseMouvement=0f;//rendre le personnage immobile
@@ -155,26 +151,25 @@ public class frederic_MovePerso : MonoBehaviour
 
 
     
-
+    /// <summary>
+    /// Detecte les collisions avec les autres collider
+    /// </summary>
+    /// <param name="other">Collider</param>
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        //si le perso entre en collision avec l'Ennemi Rouge
          if(other.tag == "EnnemiRouge" && peutPerdrevie == true){
-           StartCoroutine(PerdreVie());
-            Debug.Log("le joueur perd une vie a cause de l'ennemi rouge");
- 
+           StartCoroutine(PerdreVie()); //appel de la coroutine pour perdre de la vie
         }
+        //si le perso entre en collision avec la potion
         if(other.tag == "Potion"){
-            Debug.Log("contact avec potion");
-            Destroy(other.gameObject);
-            StartCoroutine(Sphere());
+            Destroy(other.gameObject); //destruction de la potion
+            StartCoroutine(Sphere()); //appel de la coroutine pour generer la sphere
         }
-
-        
+        //si le personnage entre en collision avec la lave qui possede la tag Lave
         else if(other.tag == "Lave")
         {
-
-            SceneManager.LoadScene("Perdu");
+            SceneManager.LoadScene("Perdu"); //generer la scene de defaite
         }
     }
 
