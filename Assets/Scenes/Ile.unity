@@ -1005,9 +1005,8 @@ MonoBehaviour:
   _cristalValue: {fileID: 566043706}
   _myLight: {fileID: 623647869}
   _startColor: {r: 0.76862746, g: 0.8784291, b: 1, a: 1}
-  _endColor: {r: 1, g: 0.76792455, b: 0.80784315, a: 1}
+  _endColor: {r: 1, g: 0.7882353, b: 0.80784315, a: 1}
   _changeColor: 1
-  _repeatColor: 0
 --- !u!1 &863029500
 GameObject:
   m_ObjectHideFlags: 0
