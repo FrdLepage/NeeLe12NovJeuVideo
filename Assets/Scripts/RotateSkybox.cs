@@ -15,7 +15,7 @@ public class RotateSkybox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RenderSettings.skybox.SetFloat("_Exposure", 0.2f);
+        RenderSettings.skybox.SetFloat("_Exposure", 0.3f);
 
     }
 
@@ -26,9 +26,7 @@ public class RotateSkybox : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * _speedRotation);
 
         if(RenderSettings.skybox.GetFloat("_Exposure") < 1){
-            RenderSettings.skybox.SetFloat("_Exposure", 0.2f + (Time.time * (_cristalValue.GetComponent<SystemeDePoint>().slider.value)/25000));
+            RenderSettings.skybox.SetFloat("_Exposure", 0.3f + (Time.time * (_cristalValue.GetComponent<SystemeDePoint>().slider.value)/25000));
         }
-        // Debug.Log(_cristalValue.GetComponent<SystemeDePoint>().slider.value);
-        // RenderSettings.skybox.SetColor("_Tint", Color.red);
     }
 }
